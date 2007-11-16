@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Id$ -->
 <xsl:stylesheet version="1.0"
-        xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xslt="output.xsl">
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xslt="output.xsl"
+ xmlns:doap="http://usefulinc.com/ns/doap#"
+        >
     <xsl:output method="xml" encoding="utf-8"/>
     <xsl:namespace-alias stylesheet-prefix="xslt" result-prefix="xsl"/>
 
@@ -39,9 +41,13 @@
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
-
+    
     <xsl:template match="xsl:include">
-        <xsl:apply-templates select="document(@href)/xsl:stylesheet/xsl:template"/>
+        <xsl:variable name="doc" select="document(@href)"/>
+        <xsl:copy-of select="$doc/xsl:stylesheet/xsl:param"/>
+        <xsl:copy-of select="$doc/xsl:stylesheet/xsl:variable"/>
+        <xsl:apply-templates select="$doc/xsl:stylesheet/xsl:include"/>
+        <xsl:apply-templates select="$doc/xsl:stylesheet/xsl:template"/>
     </xsl:template>
 
     <xsl:template match="xsl:value-of[ not(ancestor::xsl:attribute) and 
