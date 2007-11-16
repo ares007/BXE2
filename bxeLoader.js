@@ -21,7 +21,7 @@
 var BXE_VERSION = "2.0-dev";
 var BXE_BUILD = "200711130330"
 var BXE_REVISION = "$Rev$".replace(/\$Rev: ([0-9]+) \$/,"r$1");
-
+var bxe_loadMin = false;
 var bxe_notSupportedText = "Bitflux Editor only works with Mozilla >= 1.4 / Firefox on any platform. \nCurrently we recommend Mozilla 1.6 or Firefox 1.0.";
 
 if (window.location.protocol == "file:" || window.location.host.match(/localhost.*/)) {
@@ -81,7 +81,7 @@ function bxe_dump(text) {
 }
 	
 
-function bxe_start(config_file,fromUrl, configArray) {
+function bxe_start(config_file,fromUrl, configArray,loadMin) {
 	
 	/*if (! (BX_checkUnsupportedBrowsers())) {
 		return false;
@@ -115,11 +115,15 @@ function bxe_start(config_file,fromUrl, configArray) {
 					}
 				}
 			}
+			if (loadMin) {
+				bxe_loadMin = true;
+				mozile_js_files = ['bxeAll-min.js'];
+			}
 			for (var i=0; i < mozile_js_files.length; i++) 
 			{
 				var scr = document.createElementNS("http://www.w3.org/1999/xhtml","script");
 				var src = mozile_root_dir + mozile_js_files[i];
-				if (mozile_js_files[i] == "js/widget.js") {
+				if (mozile_js_files[i] == "js/widget.js" || mozile_js_files[i] == 'bxeAll-min.js') {
 					scr.onload = widget_loaded;
 				} else {
 					scr.onload = corescript_loaded;
@@ -128,6 +132,7 @@ function bxe_start(config_file,fromUrl, configArray) {
 				scr.setAttribute("language","JavaScript");
 				head.appendChild(scr);
 			}
+			
 			//when last include src is loaded, call onload handler
 			
 		}
@@ -453,20 +458,49 @@ function config_loaded(bxe_config_in) {
 		scr.setAttribute("href",bxe_config.cssfiles[i]);
 		head.appendChild(scr);
 	}
+	var core_files = ["relaxng/RelaxNG.js",
+					  "relaxng/ElementVAL.js",
+						"relaxng/NodeVAL.js",
+			            "relaxng/DocumentVAL.js",
+			            "relaxng/ElementVDOM.js",
+			            "relaxng/DocumentVDOM.js",
+			            "relaxng/NodeVDOM.js",
+			            "relaxng/AttributeVDOM.js",
+			            "mozile/mozilekb.js",
+			            "mozile/td/webdav.js",
+			            "mozile/jsdav.js",
+			           "js/table.js"];
+	var src_loaded = new Object();			
 	
-	for (var i=0; i < bxe_config.scriptfiles.length; i++) 
+     for (var i=0; i < core_files.length; i++) {
+       		if (!bxe_loadMin) {
+       	       	bxe_config.scriptfiles.unshift(core_files[i]);
+       		} else {
+       	   		src_loaded[mozile_root_dir + core_files[i]] = true;
+       		}
+	   }
+	
+	
+    for (var i=0; i < bxe_config.scriptfiles.length; i++) 
 	{
+		
 		var scr = document.createElementNS("http://www.w3.org/1999/xhtml","script");
 		if (bxe_config.scriptfiles[i].substr(0,1) == "/") {
 			var src = bxe_config.scriptfiles[i];
 		} else {
 			var src = mozile_root_dir + bxe_config.scriptfiles[i];
 		}
-		scr.onload = script_loaded;
-		scr.setAttribute("src", src);//+ "?d="+new Date());
-		scr.setAttribute("language","JavaScript");
-		head.appendChild(scr);
+		if (!src_loaded[src]) {
+			scr.onload = script_loaded;
+			scr.setAttribute("src", src);//+ "?d="+new Date());
+			scr.setAttribute("language","JavaScript");
+			head.appendChild(scr);
+			src_loaded[src] = true;
+		} else {
+			mozile_script_loaded++;
+		}
 	}
+	
 }
 
 debug = function (text, options) {
