@@ -535,7 +535,7 @@ function nonctrlKeyPressHandler(event)
 		}
 		var _ch = String.fromCharCode(event.charCode);
 		if(startOff > 0) {
-			if (startC.substringData(startOff-1,1) == STRING_NBSP) {
+			if (startC.substringData && startC.substringData(startOff-1,1) == STRING_NBSP) {
 				startC.replaceData(startOff-1,1," ");
 			}
 		}
@@ -560,8 +560,11 @@ function nonctrlKeyPressHandler(event)
 				textNode.insertData(startOff , _ch);
 			} catch (e) {
 				//try again with normalized
-				textNode.parentNode.betterNormalize();
-				textNode.insertData(startOff , _ch);
+				try {
+					textNode.parentNode.betterNormalize();
+					textNode.insertData(startOff , _ch);
+				} catch (e) {
+				}
 				
 			}
 			//textNode._childPosition = _position;
