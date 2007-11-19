@@ -628,9 +628,11 @@ function bxe_deleteEventKey(sel, backspace, noTransform,makeDefault) {
 						if (_par.childNodes.length == 1) {
 							_par.removeChild(_par.firstChild);
 							bxe_checkEmpty(_par.XMLNode,makeDefault);
+						} else if (_par.childNodes.length == 0) {
+							bxe_checkEmpty(_par.XMLNode,makeDefault);
 						} else {
 							_par.replaceChild(_par.ownerDocument.createTextNode(" "),xmlnode);
-							bxe_checkEmpty(_par.XMLNode,makeDefault);
+							bxe_checkEmptyParent(_par.XMLNode);
 						}
 					}
 					
