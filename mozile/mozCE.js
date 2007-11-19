@@ -432,7 +432,7 @@ Selection.prototype.deleteSelection = function(backspace, makeDefault)
 	
 	//this.selectEditableRange(cssr);
 	var _posAnchor = null;
-	if ( this.focusNode.nodeValue.substr(this.focusOffset,1) == " ") {
+	if ( this.focusNode.nodeValue && this.focusNode.nodeValue.substr(this.focusOffset,1) == " ") {
 		 _posPlus = this.anchorOffset;
 		 _posAnchor = this.anchorNode;
 	} else if (this.focusOffset >= this.focusNode.length && this.focusNode.nodeValue.substr(this.focusNode.length -1 ,1) == " ") {
