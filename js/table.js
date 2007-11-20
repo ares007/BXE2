@@ -1197,6 +1197,11 @@ function bxe_createTableMatrixFromTable(tbody) {
 			if(! (cell.XMLNode  && cell.XMLNode.vdom && (cell.XMLNode.vdom.bxeTabletype == "table-cell" || cell.XMLNode.vdom.bxeTabletype == "table-col")))  {continue;} //caution: may be there are text nodes (CRLF or whitespace)
 			
 			tc++;
+			
+			if (!table[tr][tc]) {
+				continue;
+			}
+			
 			//find the homogenious matrix pos
 			//alert("tr="+tr+" tc="+tc);
 			while(table[tr][tc][0] > 0) {
