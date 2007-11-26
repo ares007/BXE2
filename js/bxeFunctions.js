@@ -2693,14 +2693,12 @@ function bxe_init_serverIncludes(ctx) {
 }
 
 function bxe_init_serverIncludesReplaceNode(url, node) {
-	//var inc = document.importNode(bxe_config.serverIncludes[url], true);
 	var __bxe_id = node.getAttribute("__bxe_id");
 	divnode = document.createElement("div");
 	
 	divnode.setAttribute("__bxe_id",__bxe_id);
 	divnode.innerHTML = bxe_config.serverIncludes[url];
 	
-	//node.parentNode.removeChildOnly(node);
 	var  _existingNode =  bxe_xml_nodes[__bxe_id];
 	if (_existingNode) {
 		divnode.XMLNode = _existingNode.getXMLNode();
