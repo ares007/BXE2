@@ -373,7 +373,7 @@ function nonctrlKeyPressHandler(event)
 		{
 			return false;
 		}
-		if (cssr.startContainer.parentNode.XMLNode.vdom.bxeNoteditable) {
+		if (!cssr.startContainer.parentNode.XMLNode || cssr.startContainer.parentNode.XMLNode.vdom.bxeNoteditable) {
 			return false;
 		}
 		var lala = cssr.startContainer.parentNode.XMLNode;
