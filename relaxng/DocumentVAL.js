@@ -50,7 +50,9 @@ XMLNodeDocument.prototype.validateDocument = function(noError) {
 		if ((areaNodes[i]._SourceMode)) {
 			return false;
 		}
-		c = c & areaNodes[i].XMLNode.isNodeValid(true,null,noError)
+		if (areaNodes[i].XMLNode) {
+			c = c & areaNodes[i].XMLNode.isNodeValid(true,null,noError);
+		}
 	}
 	
 	

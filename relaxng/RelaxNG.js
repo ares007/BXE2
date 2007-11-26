@@ -325,7 +325,7 @@ function bxe_RelaxNG_nsResolver(node) {
 			this.prefixes[rootAttr[i].value] = rootAttr[i].localName;
 		} else if (rootAttr[i].localName == "ns") {
 			this.defaultNamespace = rootAttr[i].value;
-			this.prefixes[rootAttr[i].value] = "";
+			this.prefixes[rootAttr[i].value] = "default";
 		}
 	}
 }
@@ -376,7 +376,7 @@ bxe_RelaxNG_nsResolver.prototype.parseNodeName = function(nodename) {
 	} else {
 		ret.localName = spli[0];
 		ret.namespaceURI = this.defaultNamespace;
-		ret.prefix = "";
+		ret.prefix = "default";
 	}
 	return ret;
 	
@@ -413,7 +413,7 @@ NodeVDOM.prototype.parseChildren = function(node) {
 	var newChoice;
 	var newOneOrMore;
 	
-	
+	this._hasEmpty = true;
 	for (var i = 0; i < childNodes.length; i++) {
 		
 		if ((childNodes[i].nodeType == 1 && childNodes[i].namespaceURI == "http://bitfluxeditor.org/schema/2.0")) {
@@ -578,7 +578,7 @@ NodeVDOM.prototype.parseChildren = function(node) {
 				/* code from 1.1 branch */
 				newZeroOrMore = new ZeroOrMoreVDOM(childNodes[i]);
 				this.appendChild(newZeroOrMore);
-				this._hasEmpty = true;
+				//this._hasEmpty = true;
 				newZeroOrMore.parseChildren(childNodes[i]);
 				break;
 			case "attribute":
@@ -608,7 +608,7 @@ NodeVDOM.prototype.parseChildren = function(node) {
 				break;
 			case "empty":
 				this.appendChild(new EmptyVDOM());
-				this._hasEmpty = true;
+				//this._hasEmpty = true;
 				break;
 			case "data":
 				//donothing
@@ -1069,7 +1069,7 @@ ElementVDOM.prototype.__defineGetter__("nodeName", function(name) {
 ElementVDOM.prototype.__defineGetter__("canHaveChildren", 
 	function() {
 		if (this._hasEmpty) {
-		return !(this._hasEmpty);
+			return !(this._hasEmpty);
 		}
 		return true;
 	}

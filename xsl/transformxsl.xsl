@@ -48,32 +48,34 @@
         <xsl:copy-of select="$doc/xsl:stylesheet/xsl:variable"/>
         <xsl:apply-templates select="$doc/xsl:stylesheet/xsl:include"/>
         <xsl:apply-templates select="$doc/xsl:stylesheet/xsl:template"/>
+        
     </xsl:template>
 
     <xsl:template match="xsl:value-of[ not(ancestor::xsl:attribute) and 
                                        not(contains(@select,'$')) and 
-                                       not(contains(@select,'('))]
+                                       not(contains(@select,'(')) and
+                                       not(number(@select) = @select) 
+                                       
+                                       ]
                          |xsl:copy-of">
         <xsl:choose>
             <xsl:when test="not(../@__bxe_id)">
+                <xsl:variable name="xpath">
+                    <xsl:choose>
+                        <xsl:when test="contains(@select, '@')"><xsl:value-of select="@select"/>/parent::*/@__bxe_id</xsl:when>
+                        <xsl:when test="@select = '.' and ../xsl:template[match='text()']">../@__bxe_id</xsl:when>
+                        
+                        <xsl:when test="@select"><xsl:value-of select="@select"/>/@__bxe_id</xsl:when>
+                        
+                        <xsl:otherwise>@__bxe_id</xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>             
+                    
                 <span>
                     <xsl:element name="attribute" namespace="http://www.w3.org/1999/XSL/Transform">
                         <xsl:attribute name="name">__bxe_id</xsl:attribute>
                         <xsl:element name="value-of" namespace="http://www.w3.org/1999/XSL/Transform">
-
-                            <xsl:choose>
-                                <xsl:when test="contains(@select, '@')">
-                                    <xsl:attribute name="select">
-                                        <xsl:value-of select="@select"/>/parent::*/@__bxe_id</xsl:attribute>
-                                </xsl:when>
-                                <xsl:when test="@select">
-                                    <xsl:attribute name="select">
-                                        <xsl:value-of select="@select"/>/@__bxe_id</xsl:attribute>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:attribute name="select">@__bxe_id</xsl:attribute>
-                                </xsl:otherwise>
-                            </xsl:choose>
+                            <xsl:attribute name="select"><xsl:value-of select="$xpath"/></xsl:attribute>
                         </xsl:element>
                     </xsl:element>
                     <xsl:call-template name="copyValueOfNode"/>
@@ -206,7 +208,7 @@
   
   
 <!-- rewrite a tags -->
-    <xsl:template match="a|xhtml:a|script|xhtml:script|link|xhtml:link">
+   <xsl:template match="a|xhtml:a|script|xhtml:script">
 
         <span class="{local-name()}" __bxe_ns="{namespace-uri()}">
             <xsl:for-each select="@*">

@@ -814,7 +814,7 @@ function bxe_ContextPopup(e) {
 			}
 		},bxe_i18n.getText("Deletes the Element and all its children"));
 	}
-	if (node.parentNode.canHaveText) {
+	if (node.parentNode && node.parentNode.canHaveText) {
 		popup.addMenuItem(bxe_i18n.getText("Clean "), function (e) {
 			var widget = e.currentTarget.Widget;
 			var delNode = widget.MenuPopup.MainNode;
@@ -1201,23 +1201,32 @@ function bxe_getAllEditableAreas() {
 
 function bxe_getAll_bxeId() {
 	var nsResolver = new bxe_nsResolver(document.documentElement);
-	var result = document.evaluate("/html/body//*[@__bxe_id]", document.documentElement,nsResolver, 0, null);
+	var result = document.evaluate("/html/body//*[@__bxe_id ]", document.documentElement,nsResolver, 0, null);
 	var node = null;
 	var nodes = new Array();
 	node = result.iterateNext();
 	var _ids = new Array();
+	var emptyNodes = new Array();
 	while (node) {
 		//bxe_dump(result2.snapshotItem(result2.snapshotLength -1).saveXML() + "\n");
 		var id = node.getAttribute('__bxe_id');
+		
 		if (node.hasAttribute("__bxe_attribute")) {
 			id += "/"+node.getAttribute('__bxe_attribute');
 		}
-		if (! _ids[id]) {
-			nodes.push(node);
-			_ids[id] = true;
+		if (id == '') {
+			emptyNodes.push(node);
+		} else {
+			if (! _ids[id]) {
+				nodes.push(node);
+				_ids[id] = true;
+			}
 		}
 		node = result.iterateNext()
 		
+	}
+	for (var i = 0; i < emptyNodes.length; i++) {
+		emptyNodes[i].removeAttribute("__bxe_id");
 	}
 	return nodes;
 }
@@ -2351,7 +2360,7 @@ function bxe_Transform_async() {
 
 function bxe_Transform(xpath, position, validateNode,wFValidityCheckLevel) {
 	startTimer = new Date();
-	bxe_dump("TRANSFsORM\n");
+	bxe_dump("TRANSFORM\n");
 	var xml = bxe_config.xmldoc;
 	if ( bxe_config.options['onTransformBefore']) {
 		 eval(bxe_config.options['onTransformBefore'] +"(xml,'onTransformBefore')");
@@ -2379,15 +2388,41 @@ function bxe_Transform(xpath, position, validateNode,wFValidityCheckLevel) {
 	try {
 	var xmldoc = bxe_config.processor.transformToFragment(xml,document);
 	} catch (e) {
+		
 		BX_debug(e);
 	}
 	bxe_dump("transformToFragment " + (new Date() - startTimer)/1000 + " sec\n");
 	
 	var bxe_area = document.getElementById("bxe_area");
-	
 	bxe_area.removeAllChildren();
 	bxe_area.style.display="none";
+	
 	bxe_area.appendChild(xmldoc);
+	
+	var b = document.evaluate("./*[local-name() = 'html']/*[local-name() = 'body']", bxe_area, null, XPathResult.ANY_UNORDERED_NODE_TYPE,null);
+	if (b.singleNodeValue) {
+		var c = b.singleNodeValue.firstChild;
+		
+		while (c) {
+			var cthis = c;
+			c = c.nextSibling;
+			bxe_area.appendChild(cthis);
+			
+		}
+		//try to find css :)
+		var c = document.evaluate("./*[local-name() = 'html']/*[local-name() = 'head']/*[local-name() = 'link' and @rel='stylesheet' and @type='text/css']", bxe_area, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,null);
+		if (bxe_firstTransform) {
+			for (var i = 0; i < c.snapshotLength; i++) {
+				
+				var x = document.body.appendChild(document.createElement("link"));
+				x.setAttribute("type","text/css");
+				x.setAttribute("rel","stylesheet");
+				x.setAttribute("href",c.snapshotItem(i).getAttribute("href"));
+			}
+		}
+		b.singleNodeValue.parentNode.parentNode.removeChild(b.singleNodeValue.parentNode);
+		
+	}
 	bxe_dump("remove and Append " + (new Date() - startTimer)/1000 + " sec\n");
 	
 	bxe_init_serverIncludes(bxe_area);
@@ -2480,13 +2515,14 @@ function bxe_Transform(xpath, position, validateNode,wFValidityCheckLevel) {
 		
 	}
 	bxe_dump("cursor selection " + (new Date() - startTimer)/1000 + " sec\n");
-	
+	bxe_firstTransform = false;
 	bxe_history_snapshot();
 	bxe_dump("history snapshot " + (new Date() - startTimer)/1000 + " sec\n");
 }
 
 
 function bxe_Transform_first() {
+	bxe_firstTransform = true;
 	bxe_Transform();
 	var sel = window.getSelection();
 	var walker = document.createTreeWalker(

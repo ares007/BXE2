@@ -215,6 +215,7 @@ XMLDocument.prototype.onload_xsltransform = function(e) {
 					processor.setParameter(null,bxe_config.xslparams[i].name, bxe_config.xslparams[i].value);
 				}
 			}
+		
 			processor.importStylesheet(newDocument);
 		} catch(e) {
 			//bxe_dump(newDocument.saveXML(newDocument));
@@ -277,7 +278,7 @@ XMLDocument.prototype.importXHTMLDocument = function(xhtmlfile) {
 		xml_loaded(xhtmldoc.xmldoc);
 	}
 	
-	bxe_about_box.addText(bxe_i18n.getText("Import external XHTML ..."));
+	bxe_about_box.addText("Import external XHTML ...");
 	var xhtmldoc = document.implementation.createDocument("", "", null);
 	xhtmldoc.addEventListener("load", onload_xhtml, false);
 	xhtmldoc.xmldoc = this;

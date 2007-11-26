@@ -939,21 +939,21 @@ Widget_MenuPopup.prototype.appendAllowedSiblings = function( node, parentSub) {
 	
 	for (i = 0; i < ac.length; i++) {
 		if (ac[i].nodeType != 3 &&  !ac[i].vdom.bxeDontshow  && !ac[i].vdom.bxeNoaddappenddelete && ac[i].vdom.bxeTabletype != "table-row"  && ac[i].vdom.bxeTabletype != "table-col" ) { // && !bxe_config.dontShowInContext[ac[i].namespaceURI + ":" +ac[i].localName]
-				if (i == 0 || ac[i].vdom != ac[i-1].vdom) {
+			if (i == 0 || (ac[i].localName != ac[i-1].localName && ac[i].namespaceURI != ac[i-1].namespaceURI )) {
 				if (ac[i].vdom.bxeHelptext) {
-						var _helptext = ac[i].vdom.bxeHelptext;
-					} else {
-						var _helptext = false;
-					}
+					var _helptext = ac[i].vdom.bxeHelptext;
+				} else {
+					var _helptext = false;
+				}
 				var menui = this.addMenuItem(ac[i].vdom.bxeName.replace(/ /g,STRING_NBSP), function(e) { 
 					var widget = e.currentTarget.Widget;
 					eDOMEventCall("appendNode",document,{"appendToNode": widget.AppendToNode, "localName":widget.InsertLocalName,"namespaceURI":widget.InsertNamespaceURI})
-				
+					
 				}, _helptext);
                 menui.InsertLocalName = ac[i].localName;
                 menui.InsertNamespaceURI = ac[i].namespaceURI;
 				menui.AppendToNode = node.XMLNode;
-				}
+			}
 		}
 	}
 	var ac = node.XMLNode.allowedChildren;
@@ -1030,7 +1030,7 @@ Widget_MenuPopup.prototype.appendAllowedChildren = function( node, afterCursor) 
 								_p2.init();
 							}
 							
-						} else if (!(_p.compareDocumentPosition(widget.AppendToNode._node) &  Node.DOCUMENT_POSITION_CONTAINED_BY)){
+						} else if (!_p || !(_p.compareDocumentPosition(widget.AppendToNode._node) &  Node.DOCUMENT_POSITION_CONTAINED_BY)){
 							var _p2 = widget.AppendToNode._node.appendChild(widget.AppendToNode._node.ownerDocument.createTextNode(""));
 								_p2.init();
 						  
