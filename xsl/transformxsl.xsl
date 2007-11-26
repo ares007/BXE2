@@ -70,8 +70,12 @@
                         <xsl:otherwise>@__bxe_id</xsl:otherwise>
                     </xsl:choose>
                   </xsl:variable>             
-                    
-                <span>
+                <xsl:element name="choose" namespace="http://www.w3.org/1999/XSL/Transform">
+                   <xsl:element name="when" namespace="http://www.w3.org/1999/XSL/Transform">
+                       <xsl:attribute name="test"><xsl:value-of select="$xpath"/> != ''</xsl:attribute>
+                       
+                                
+                    <span>
                     <xsl:element name="attribute" namespace="http://www.w3.org/1999/XSL/Transform">
                         <xsl:attribute name="name">__bxe_id</xsl:attribute>
                         <xsl:element name="value-of" namespace="http://www.w3.org/1999/XSL/Transform">
@@ -80,6 +84,14 @@
                     </xsl:element>
                     <xsl:call-template name="copyValueOfNode"/>
                 </span>
+                </xsl:element>
+                    <xsl:element name="otherwise" namespace="http://www.w3.org/1999/XSL/Transform">   
+                    
+                        <xsl:call-template name="copyValueOfNode"/>
+                    </xsl:element>
+                    </xsl:element>
+                    
+                
             </xsl:when>
             <xsl:otherwise>
                 <xsl:call-template name="copyValueOfNode"/>
