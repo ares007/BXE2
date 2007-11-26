@@ -298,9 +298,11 @@ bxeConfig.prototype.translateUrl = function (node)
     {
         url = this.urlParams[node.firstChild.data];
     }
-    else
+    else if (node.firstChild)
     {
         url = node.firstChild.data;
+    } else {
+    	return "";
     }
 	
 	//replace {BX_root_dir} with the corresponding value;
