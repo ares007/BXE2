@@ -6291,7 +6291,7 @@ return true
 return false
 }if(U.keyCode==13){B=S.getEditableRange();
 if(!B){return false
-}if(B.startContainer.parentNode.XMLNode.vdom.bxeNoteditable){return false
+}if(!B.startContainer.parentNode.XMLNode||B.startContainer.parentNode.XMLNode.vdom.bxeNoteditable){return false
 }var N=B.startContainer.parentNode.XMLNode;
 if(N.vdom.bxeNextelement){if(!B.collapsed){bxe_deleteWholeSelection(S,false)
 }S.removeAllRanges();
@@ -6699,7 +6699,7 @@ ContextVDOM.prototype.isValid=function(){if(this.vdom){return this.vdom.isValid(
 }else{if(this.node._node.hasChildNodes()){this.setErrorMessage(this.node.nodeName+" is not allowed to have children");
 return false
 }else{this.node.vdom=this.vdom;
-return true
+return false
 }}};
 ContextVDOM.prototype.setVDOM=function(B,C){if(C&&this.refs.length>0){while(this.refs.length>C){var A=this.refs.pop();
 debug("this.refs.pop"+A.name)
@@ -6778,7 +6778,7 @@ bxe_catch_alert(F);
 return D
 }}else{return this._allowedNextSiblings
 }});
-XMLNodeElement.prototype.__defineGetter__("canHaveText",function(){if(this._vdom==null||typeof this._vdom=="undefined"){return true
+XMLNodeElement.prototype.__defineGetter__("canHaveText",function(){if(this._vdom==null||typeof this._vdom=="undefined"){return false
 }else{if(typeof this.vdom._canHaveText=="undefined"){var B=this.allowedChildren;
 if(B){for(var A=0;
 A<B.length;
