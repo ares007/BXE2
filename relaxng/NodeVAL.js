@@ -70,59 +70,60 @@ XMLNode.prototype._isNodeValid = function(deep,wFValidityCheckLevel ) {
 		} else {
 			return false;
 		}
-	
+		
 	} catch (e) { bxe_dump("couldn't make new context..\n");}
 	if (ctxt && ctxt.node) {
-	do {
-		//bxe_dump(ctxt.node + "\n");
-		var nodeType = ctxt.node._node.nodeType
-		if (nodeType == 3 && ctxt.node.isWhitespaceOnly) {
-			continue;
-		} 	
-		if (nodeType == Node.COMMENT_NODE) {
-			continue;
-		}
-		//FIXME: check CDATA_SECTIONS AS WELL
-		if (nodeType == Node.CDATA_SECTION_NODE) {
-			continue;
-		}
-		
-		if ( ctxt.isValid()) {
-			var _node = ctxt.node._node;
-			if(_node.hasChildNodes() ) {
-				if (deep) {
-					var refsPosition = ctxt.refs.length;
-					var retctxt = ctxt.node._isNodeValid(deep,  wFValidityCheckLevel )
-					if (retctxt.isError) {
-						ctxt.addErrorMessages(retctxt.errormsg);
-					}
-				}
-			} else if (_node.nodeType == 1 && ctxt.node.canHaveText) {
-				ctxt.node.setContent("#empty");
-				_node.setAttribute("__bxe_defaultcontent","true");
-				
+		do {
+			//bxe_dump(ctxt.node + "\n");
+			var nodeType = ctxt.node._node.nodeType
+			if (nodeType == 3 && ctxt.node.isWhitespaceOnly) {
+				continue;
+			} 	
+			if (nodeType == Node.COMMENT_NODE) {
+				continue;
 			}
-		} else {
+			//FIXME: check CDATA_SECTIONS AS WELL
+			if (nodeType == Node.CDATA_SECTION_NODE) {
+				continue;
+			}
+			
+			if ( ctxt.isValid()) {
+				var _node = ctxt.node._node;
+				if(_node.hasChildNodes() ) {
+					if (deep) {
+						var refsPosition = ctxt.refs.length;
+						var retctxt = ctxt.node._isNodeValid(deep,  wFValidityCheckLevel )
+						if (retctxt.isError) {
+							ctxt.addErrorMessages(retctxt.errormsg);
+						}
+					}
+				} else if (_node.nodeType == 1 && ctxt.node.canHaveText) {
+					ctxt.node.setContent("#empty");
+					_node.setAttribute("__bxe_defaultcontent","true");
+					
+				}
+			} else {
 				var _msg = "";
 				if (nodeType == 3) {
-						_msg = "text ('" + ctxt.node.nodeValue +"')";
-					} else { 
-						_msg = ctxt.node.localName +"("+ctxt.node.namespaceURI+ ") ";
-					}
+					_msg = "text ('" + ctxt.node.nodeValue +"')";
+				} else { 
+					_msg = ctxt.node.localName +"("+ctxt.node.namespaceURI+ ") ";
+				}
 				if (ctxt.node.parentNode.isAllowedChild(ctxt.node.namespaceURI, ctxt.node.localName)) {
 					
 					_msg += "is not allowed at this position as child of  " + this.localName ;
 				}
 				else {
 					_msg += " is not allowed as child of  " + this.localName +"("+this.namespaceURI+ ")";
+	
 				}
 				ctxt.setErrorMessage(_msg);
-		}
-		//debug ("---------");
-	} while (ctxt.next() )
-
-	
-		}
+			}
+			//debug ("---------");
+		} while (ctxt.next() )
+		
+		
+	}
 	return ctxt;
 	
 }
@@ -198,6 +199,7 @@ ContextVDOM.prototype.nextVDOM = function() {
 	if (nextSib) {
 		this.vdom = nextSib;
 	}  else {
+	
 		this.vdom = null;
 		return null;
 	}
@@ -214,7 +216,8 @@ ContextVDOM.prototype.isValid = function() {
 			return false;
 		} else {
 			this.node.vdom = this.vdom;
-			return true;
+			//this was "return true", please test, if this is ok, if we set that to return false	
+			return false;
 		}
 	}
 }

@@ -184,7 +184,8 @@ XMLNodeElement.prototype.__defineGetter__ ("canHaveText",
 		
 		if (this._vdom ==null || typeof this._vdom == "undefined"  ) {
 			//bad hack...
-			return true;
+			
+			return false;
 		} else if ( typeof this.vdom._canHaveText == "undefined") {
 			
 			var ac = this.allowedChildren;
