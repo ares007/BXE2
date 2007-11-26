@@ -2304,8 +2304,9 @@ try{if(B.nodeType!=1){return B.value
 }}catch(C){return""
 }if(B.getAttribute("isConfigParam")=="true"){A=this.configParams[B.firstChild.data]
 }else{if(B.getAttribute("isParam")=="true"){A=this.urlParams[B.firstChild.data]
-}else{A=B.firstChild.data
-}}if(B.getAttribute("prefix")){A=B.getAttribute("prefix")+A
+}else{if(B.firstChild){A=B.firstChild.data
+}else{return""
+}}}if(B.getAttribute("prefix")){A=B.getAttribute("prefix")+A
 }return A
 };
 bxeConfig.prototype.getContent=function(B){var A=this.doc.evaluate(B,this.doc,null,0,null);
