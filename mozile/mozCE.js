@@ -798,13 +798,13 @@ Selection.prototype.paste = function(paraElementVdom,selNode,alwaysAppend)
 			if (paraElementVdom.bxeClipboardGrandChild) {
 				elementName = paraElementVdom.bxeClipboardGrandChild;
 				elementNameParent = paraElementVdom.bxeClipboardChild;
-				elementNameGrandParent = paraElementVdom.nodeName;
+				elementNameGrandParent = paraElementVdom.localName;
 			}
 			else if (paraElementVdom.bxeClipboardChild) {
 				elementName = paraElementVdom.bxeClipboardChild;
-				elementNameParent = paraElementVdom.nodeName;
+				elementNameParent = paraElementVdom.localName;
 			} else {
-				elementName = paraElementVdom.nodeName;
+				elementName = paraElementVdom.localName;
 			}
 		} else {
 			elementName = bxe_config.options['autoParaElementName'];
