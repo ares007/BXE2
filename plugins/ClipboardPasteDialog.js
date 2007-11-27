@@ -74,13 +74,14 @@ function BxeTextClipboard_OpenDialog(e,node) {
 	
 	
 	var t = bxe_config.BxeClipboardPasteDialog.tabledelimiter;
+	if (t.length > 0) {
 	_chooser = new Array();
 	for (i = 0; i < t.length; i++) {
 		_chooser[t[i].name] = t[i].value ;
 	}
 	
 	mod.addItem("delimiter", "", "select",null,_chooser,true);
-	
+	}
 	var _modBox = document.getElementById("modalBoxclipboard");
 	
 	 mod.node.style.width = window.innerWidth - 150 + "px"; 
