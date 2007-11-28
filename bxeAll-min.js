@@ -3523,10 +3523,10 @@ var elementName=null;
 if(paraElementVdom=="__text__"){}else{if(paraElementVdom){if(paraElementVdom.namespaceURI){elementNamespace=paraElementVdom.namespaceURI
 }if(paraElementVdom.bxeClipboardGrandChild){elementName=paraElementVdom.bxeClipboardGrandChild;
 elementNameParent=paraElementVdom.bxeClipboardChild;
-elementNameGrandParent=paraElementVdom.nodeName
+elementNameGrandParent=paraElementVdom.localName
 }else{if(paraElementVdom.bxeClipboardChild){elementName=paraElementVdom.bxeClipboardChild;
-elementNameParent=paraElementVdom.nodeName
-}else{elementName=paraElementVdom.nodeName
+elementNameParent=paraElementVdom.localName
+}else{elementName=paraElementVdom.localName
 }}}else{elementName=bxe_config.options["autoParaElementName"];
 elementNamespace=bxe_config.options["autoParaElementNamespace"]
 }}cntnt.data=cntnt.data.replace(/\r/g,"\n").replace(/\n+/g,"\n");
