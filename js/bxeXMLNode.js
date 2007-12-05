@@ -412,6 +412,8 @@ XMLNodeElement.prototype.makeDefaultNodes2 = function(noPlaceholderText) {
 	if (this.vdom.bxeOnnewType == "popup") {
 		bxe_Transform(false,false,this);
 		window.bxe_lastNode = this;
+		//for BCs sake...
+		window.bxe_ContextNode = this;
 		var pop = window.open(this.vdom.bxeOnnew,"foobar","width=600,height=600,resizable=yes,scrollbars=yes");
 		pop.focus();
 		

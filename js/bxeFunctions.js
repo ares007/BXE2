@@ -2210,7 +2210,7 @@ function bxe_insertContent_async(node,replaceNode, options,selNode) {
 		
 		//var newNode = docfrag.firstChild.init();
 		newNode = docfrag.firstChild;
-		replaceNode.parentNode.replaceChild(newNode,replaceNode);
+		replaceNode._node.parentNode.replaceChild(newNode,replaceNode._node);
 		//newNode._node.updateXMLNode();
 		//debug("valid? : " + newNode.getXMLNode().isNodeValid());
 		bxe_Transform(false,false,replaceNode.parentNode);
