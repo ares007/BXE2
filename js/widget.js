@@ -92,7 +92,10 @@ Widget.prototype.hide = function () {
 	var sel = window.getSelection();
 		
 	if (this.cssr) {
-		sel.selectEditableRange(this.cssr);
+		try {
+			sel.selectEditableRange(this.cssr);
+		} catch(e) {
+		}
 	} else if ( sel.anchorNode && sel.anchorNode.compareDocumentPosition(this.node) & Node.DOCUMENT_POSITION_CONTAINS) {
 		sel.collapse(document.documentElement.firstChild, 0);
 	}
@@ -1275,7 +1278,11 @@ Widget_ModalBox.prototype.submitAndClose = function (e) {
 				sel.extend(Widget.selFocusNode,Widget.selFocusOffset);
 			}
 		} catch (f) {
-			sel.selectEditableRange(Widget.cssr);
+			try {
+				sel.selectEditableRange(Widget.cssr);
+			} catch (g) {
+			
+			}
 		}
 		
 		
@@ -1315,7 +1322,11 @@ Widget_ModalBox.prototype.show = function(x,y, position,noMaxHeight) {
 				bxe_registerKeyHandlers();
 				if (e.target.Widget.cssr) {
 					var sel = window.getSelection();
+					try {
 					sel.selectEditableRange(e.target.Widget.cssr);
+					} catch(e) {
+						
+					}
 				}
 				if (e.target.Widget.callbackCancel) {
 					e.target.Widget.callbackCancel();
