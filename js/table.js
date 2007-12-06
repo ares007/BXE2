@@ -172,7 +172,24 @@ Element.prototype.TableCellMergeDown = function () {
 		child = nextchild;
 	}
 	this.normalize();
-	downCol.parentNode.removeChild(downCol);
+	var downPar = downCol.parentNode;
+	downPar.removeChild(downCol);
+	// if row below does not have any children anymore, delete it
+	// fix for BXEB-60
+	if (downPar.XMLNode.isWhitespaceOnly) {
+		downPar.parentNode.removeChild(downPar);
+		var child = this.parentNode.firstChild;
+		while (child) {
+			var nextchild = child.nextSibling;
+			if (child.nodeType == 1) {
+				var _rowspan = bxe_table_getSpanCount(child.getAttribute("rowspan") );
+			 	if (_rowspan > 1) {
+					child.setAttribute("rowspan",_rowspan - 1);
+			 	}	
+			}
+			child = nextchild;
+		}
+	}
 	return this.parentNode.parentNode;
 }
 
