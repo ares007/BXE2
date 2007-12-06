@@ -571,6 +571,7 @@ function bxe_toggleTextClass(e) {
 		
 		if(!(_node.XMLNode.makeDefaultNodes(true))) {
 			bxe_Transform(id,"select",_node.parentNode.XMLNode);
+			
 		}
 		
 		//sel.toggleTextClass(e.additionalInfo.localName,e.additionalInfo.namespaceURI);
@@ -2623,7 +2624,7 @@ function bxe_init_htmldocument() {
 				
 				if (notEditable) {
 					
-					if (node.XMLNode.nodeType != 2 && !node.XMLNode.vdom.bxeNoteditableContextMenu) {
+					if (node.XMLNode && node.XMLNode.nodeType != 2 && !node.XMLNode.vdom.bxeNoteditableContextMenu) {
 						node.removeAttribute("__bxe_id");
 						node.XMLNode = null;
 						
