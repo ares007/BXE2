@@ -4852,7 +4852,7 @@ if(G&&G.vdom&&G.vdom.attributes&&G.vdom.attributes[H]&&F.getXMLNode().vdom.attri
 }}else{J=true
 }}else{C.XMLNode=F.getXMLNode();
 if(C.XMLNode.vdom&&C.XMLNode.vdom.bxeNoteditable){J=true
-}}if(J){if(C.XMLNode.nodeType!=2&&!C.XMLNode.vdom.bxeNoteditableContextMenu){C.removeAttribute("__bxe_id");
+}}if(J){if(C.XMLNode&&C.XMLNode.nodeType!=2&&!C.XMLNode.vdom.bxeNoteditableContextMenu){C.removeAttribute("__bxe_id");
 C.XMLNode=null
 }else{C.addEventListener("click",MouseClickEvent,false)
 }C.setAttribute("__bxe_noteditable","true")
@@ -5047,28 +5047,35 @@ B[F][E]=B[F][E-1];
 B[F][E-1]=C
 }return bxe_rebuildTableByTableMatrix(this,B)
 };
-Element.prototype.TableCellMergeDown=function(){var G=bxe_table_getRowAndColPosition(this);
-var I=G["matrix"];
-var A=G["row"];
-var E=G["col"];
+Element.prototype.TableCellMergeDown=function(){var H=bxe_table_getRowAndColPosition(this);
+var J=H["matrix"];
+var A=H["row"];
+var F=H["col"];
 var B=bxe_table_getSpanCount(this.getAttribute("rowspan"));
-if(!I[A+B]){alert(bxe_i18n.getText("There's no cell below to be merged"));
+if(!J[A+B]){alert(bxe_i18n.getText("There's no cell below to be merged"));
 return 
-}var F=I[A+B][E][1];
-if(!F){alert(bxe_i18n.getText("There's no cell below to be merged"));
+}var G=J[A+B][F][1];
+if(!G){alert(bxe_i18n.getText("There's no cell below to be merged"));
 return 
-}var J=bxe_table_getSpanCount(F.getAttribute("colspan"));
-var H=bxe_table_getSpanCount(this.getAttribute("colspan"));
-if(J!=H){alert(bxe_i18n.getText("Down cell's colspan is different to this cell's colspan, merging not possible"));
+}var L=bxe_table_getSpanCount(G.getAttribute("colspan"));
+var I=bxe_table_getSpanCount(this.getAttribute("colspan"));
+if(L!=I){alert(bxe_i18n.getText("Down cell's colspan is different to this cell's colspan, merging not possible"));
 return 
 }this.setAttribute("rowspan",B+1);
-var C=F.firstChild;
-while(C){var D=C.nextSibling;
+var C=G.firstChild;
+while(C){var E=C.nextSibling;
 this.appendChild(C);
-C=D
+C=E
 }this.normalize();
-F.parentNode.removeChild(F);
-return this.parentNode.parentNode
+var K=G.parentNode;
+K.removeChild(G);
+if(K.XMLNode.isWhitespaceOnly){K.parentNode.removeChild(K);
+var C=this.parentNode.firstChild;
+while(C){var E=C.nextSibling;
+if(C.nodeType==1){var D=bxe_table_getSpanCount(C.getAttribute("rowspan"));
+if(D>1){C.setAttribute("rowspan",D-1)
+}}C=E
+}}return this.parentNode.parentNode
 };
 Element.prototype.TableCellSplitRight=function(){var B=bxe_splitAtSelection(this);
 var C=parseInt(B.getAttribute("colspan"));
