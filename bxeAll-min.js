@@ -4770,13 +4770,14 @@ if(b.singleNodeValue){var c=b.singleNodeValue.firstChild;
 while(c){var cthis=c;
 c=c.nextSibling;
 bxe_area.appendChild(cthis)
-}var c=document.evaluate("./*[local-name() = 'html']/*[local-name() = 'head']/*[local-name() = 'link' and @rel='stylesheet' and @type='text/css']",bxe_area,null,XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,null);
+}var c=document.evaluate("./*[local-name() = 'html']/*[local-name() = 'head']/*[local-name() = 'link' and @rel='stylesheet' and @type='text/css' and not(@media = 'print')]",bxe_area,null,XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,null);
 if(bxe_firstTransform){for(var i=0;
 i<c.snapshotLength;
 i++){var x=document.body.appendChild(document.createElement("link"));
 x.setAttribute("type","text/css");
 x.setAttribute("rel","stylesheet");
-x.setAttribute("href",c.snapshotItem(i).getAttribute("href"))
+x.setAttribute("href",c.snapshotItem(i).getAttribute("href"));
+x.setAttribute("media",c.snapshotItem(i).getAttribute("media"))
 }}b.singleNodeValue.parentNode.parentNode.removeChild(b.singleNodeValue.parentNode)
 }bxe_dump("remove and Append "+(new Date()-startTimer)/1000+" sec\n");
 bxe_init_serverIncludes(bxe_area);
