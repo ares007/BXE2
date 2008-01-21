@@ -1,141 +1,89 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
+<?xml version='1.0' encoding='Utf-8'?>
 <document>
 	<header>
-		<shorttitle>Startseite Bechtle AG.</shorttitle>
+		<shorttitle>Testseite Liip AG.</shorttitle>
 		<subs>
-			<ilink url='/sh'>IT-Dienstleistung</ilink>
-			<ilink url='/itsolutions'>IT-Lösungen</ilink>
-			<ilink url='/it-products'>IT-Produkte</ilink>
-			<ilink url='/b2g'>Öffentliche Auftraggeber</ilink>
-			<ilink url='/training'>Schulungszentren</ilink>
-			<ilink url='/company'>Das Unternehmen</ilink>
-			<ilink url='/company/ir'>Investor Relations (IR)</ilink>
-			<ilink url='/jobs'>Stellenangebote</ilink>
-			<ilink url='/impress'>Impressum</ilink>
+			<ilink url='/blog'></ilink>
 		</subs>
-		<keywords>Hier bitte die Schluesselwoerter eingeben, um die Suche mit bestimmten Begriffen auf dieses Dokument zu lenken. Die Begriffe einfach durch Leerzeichen getrennt auffuehren...</keywords>
+		<keywords></keywords>
 		<specials/>
-		<docnotes> 20030314/joe: ich wuensche viel Spass beim Pflegen und Erstellen mit dem CMS '/be/cope'. Feel fine and kiss the future ;-)</docnotes>
+		
 	</header>
 	<content>
-		<title>&amp; Willkommen auf der Web-Site der Bechtle AG ( I N W O R K )</title>
-		<abstract>Hier informieren wir Sie über Ihren IT-Partner, heute und morgen - europaweit!</abstract>
+		<title>Willkommen auf der BXE Testseite der Liip AG</title>
+		<abstract>Das ist eine Testseite</abstract>
 		<page coid='id0x043ea0e0'>
 			<article coid='id0x03929d18'>
 				<collection coid='id0x04578a28' layout='row'>
 					<block coid='id0x024eea28' align='left'>
-						<spacer display='line'>XXX</spacer>
+						<spacer display='line'> </spacer>
 						<systemhousenavigator/>
-						<spacer display='line'>XXX</spacer>
+						<spacer display='line'> </spacer>
 						<paraheadline coid='id0x0435f0f0'>Im Mittelpunkt unserer Arbeit stehen Sie, unser Kunde.</paraheadline>
 						<news coid='id0x030537b0'>
-							<title>Bechtle AG: Neunmonatsergebnisse auf Rekordniveau</title>
+							<title>Liip AG: Agile Web Development</title>
 							<timestamp>
-								<year>2005</year>
-								<month>11</month>
-								<day>15</day>
+								<year>2008</year>
+								<month>01</month>
+								<day>21</day>
 								<hour>09</hour>
 								<minute>00</minute>
 							</timestamp>
-							<source>Bechtle AG</source>
+							<source>Liip AG</source>
 							<content>
-								<para>Endgültige Geschäftszahlen zum dritten Quartal </para>
+								<para>BXE - The Wysiwyg XML Editor </para>
 							</content>
-							<author>Bechtle AG</author>
+							<author>Liip AG</author>
 							<contact>
-								<email address='#address'>sabine.emich@bechtle.com</email>
+								<email address='#address'>chregu@liip.com</email>
 							</contact>
 						</news>
-					</block>
-					<block coid='id0x0258f7d0' align='left'>
-						<spacer display='line'>XXX</spacer>
-						<para>Die Bechtle AG bietet Ihnen als Kunde:</para>
-						<para>
-							<bold>deutschlandweit </bold>das komplette Systemhaus- Leistungsspektrum an rund 50 Standorten,
-						</para>
-						<para>
-							<bold>europaweit</bold> die kostengünstige Bezugsquelle für 22.000 EDV-Markenprodukte.
-						</para>
-						<para>Gerade diese starke und in Europa einzigartige Kombination von Systemhausgeschäft und eCommerce macht uns zu Ihrem IT-Partner, heute <bold>und</bold> morgen.
-						</para>
-						<spacer display='line'>XXX</spacer>
-						<para>Wählen Sie ein Land aus:</para>
-                        <table>
-                        <tr><td>A 1</td><td>A 2</td><td>A 3</td></tr>
-                        <tr><td>B 1 </td><td>B 2</td><td>B 3</td></tr>
-                        </table>
-						<bechtleshopnavigator/>
-						<spacer display='line'>XXX</spacer>
-                        <media url="../../images/bxe.png" x-size="0" y-size="0" format="original" caption="Caption..."/>
-
 					</block>
 				</collection>
 				<collection coid='id0x027a19a8' layout='col'>
 					<block coid='id0x01ea3b58' align='left'>
-						<paraheadline coid='id0x01d17b30'>Die aktuellen Bechtle-Meldungen:</paraheadline>
+						<paraheadline coid='id0x01d17b30'>Die aktuellen Liip-Meldungen:</paraheadline>
 <competencecenter coid='id0x037c8230'>
 	<title>Herzlich Willkommen im Bereich</title>
-	<name>CAD</name>
-	<concept>Wir sind der Spezialist für die Mechanische Konstruktion mit Autodesk Mechanik Produkten und dem EDM System Compass.</concept>
+	<name>Agile Web Development</name>
+	<concept>Wir sind der Spezialist fÃ¼r die Mechanische Konstruktion mit Autodesk Mechanik Produkten und dem EDM System Compass.</concept>
 	<portfolio>
 		<itemizedlist>
-			<bxlistitem>2 D Autodesk Mechanik Produkte</bxlistitem>
-			<bxlistitem>3 D Autodesk Inventor</bxlistitem>
-			<bxlistitem>EDM und Dokumentenmanagementsystem Compass</bxlistitem>
+			<bxlistitem>Einmal eingeben, mehrmals ausgeben: Flux CMS</bxlistitem>
+			<bxlistitem>Editieren von Inhalten leicht gemacht: BXE WYSIWYG Editor</bxlistitem>
+			<bxlistitem>Von den XML und PHP Experten: Liip ist aktiv in der Entwicklung der Programmiersprache PHP involviert.</bxlistitem>
 		</itemizedlist>
 	</portfolio>
-	<team>20 Mitarbeiter in Neckarsulm, Chemnitz, Dresden, Leipzig , Weimar und Hamburg</team>
-	<customers>Allgemeiner Maschinenbau, Sondermaschinenbau, Werkzeugbau, Fahrzeugbau</customers>
-	<data>Autodesk System Center und Compass Lösungspartner</data>
+	<team>31 Mitarbeiter in Freiburg, Bern und ZÃ¼rich</team>
+	<customers>Kunden die uns vertrauen sind unsere Referenzen.</customers>
+	<data>local.ch, ZÃ¼rich,
+			Schweizerische Nationalbank, Bern / ZÃ¼rich, 
+			Cablecom GmbH, ZÃ¼rich, 
+			Radio DRS, Bern,
+			Schweizer Fernsehen (SF), ZÃ¼rich, 
+			Raiffeisen, St. Gallen, 
+			Schweizerische Eidgenossenschaft, Bern </data>
 	<contact>
 		<person coid='id0x444c8230'>
-			<location>Neckarsulm</location>
-			<firstname>Markus</firstname>
-			<lastname>Grimm</lastname>
-			<fon>07132 / 981-2245</fon>
-			<email address='markus.grimm@bechtle.com'>markus.grimm@bechtle.com</email>
+			<location>ZÃ¼rich</location>
+			<firstname>Chregu</firstname>
+			<lastname>Stocker</lastname>
+			<fon>+41 44 240 56 70</fon>
+			<email address='chregu@liip.com'>chregu@liip.com</email>
 		</person>
-		<person coid='id0x444c8230'>
-			<location>Chemnitz</location>
-			<firstname>Uwe</firstname>
-			<lastname>Lindner</lastname>
-			<fon>0371 / 35 17-130</fon>
-			<email address='uwe.linder@bechtle.com'>uwe.linder@bechtle.com</email>
-		</person>
-		<person coid='id0x444c8230'>
-			<location>Dresden</location>
-			<firstname>Andreas</firstname>
-			<lastname>Klaus</lastname>
-			<fon>0351 / 4 22 74-69</fon>
-			<email address='andreas.klaus@bechtle.com'>andreas.klaus@bechtle.com</email>
-		</person>
-		<person coid='id0x444c8230'>
-			<location>Leipzig / Magdeburg</location>
-			<firstname>Heinz</firstname>
-			<lastname>Hilbert</lastname>
-			<fon>034205 / 759-40</fon>
-			<email address='heinz.hilbert@bechtle.com'>heinz.hilbert@bechtle.com</email>
-			</person>
-		<person coid='id0x444c8230'>
-			<location>Weimar / Gera / Eisenach</location>
-			<firstname>Annette</firstname>
-			<lastname>Neubauer</lastname>
-			<fon>03643 / 813-433</fon>
-			<email address='annette.neubauer@bechtle.com'>annette.neubauer@bechtle.com</email>
-		</person>
-		<person coid='id0x444c8230'>
-			<location>Hamburg (ehem. Proficad)</location>
-			<firstname>Martin</firstname>
-			<lastname>Kitscha</lastname>
-			<fon>040/239 986- 161</fon>
-			<email address='martin.kitscha@bechtle.com'>martin.kitscha@bechtle.com</email>
+	    <person coid='id0x444c8230'>
+			<location>Freiburg</location>
+			<firstname>Gerhard</firstname>
+			<lastname>Andrey</lastname>
+			<fon>+41 26 422 25 11</fon>
+			<email address='gerhard.andrey@liip.com'>gerhard.andrey@liip.com</email>
 		</person>
 	</contact>
 </competencecenter>
 						<news_preview_navigator/>
-						<xform type='contact_standard' recipient='info@bechtle.com'/>
-						<xform type='ir_mailservice' recipient='info@bechtle.com'/>
-						<xform type='press_mailservice' recipient='info@bechtle.com'/>
+						<xform type='contact_standard' recipient='info@Liip.com'/>
+						<xform type='ir_mailservice' recipient='info@Liip.com'/>
+						<xform type='press_mailservice' recipient='info@Liip.com'/>
 						<competencecenternavigator/>
 					</block>
 				</collection>
