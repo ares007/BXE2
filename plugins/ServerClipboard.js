@@ -43,7 +43,8 @@ function BxeServerClipboard_menu(e) {
 		popup.hasEditAttributes = true;
 	}
 	
-	popup.addMenuItem("Copy "  + e.target.XMLNode.vdom.bxeName  + " to Server", function (e) {
+	
+	popup.addMenuItem(bxe_i18n.getText("Copy {0} to Server",new Array(node.vdom.bxeName)), function (e) {
 		var url = eval(bxe_config.ServerClipboard.urlfunction + "('POST')");
 		if (url) {
 			var mnode = e.currentTarget.Widget.MenuPopup.MainNode;

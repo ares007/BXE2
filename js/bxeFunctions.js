@@ -1,7 +1,7 @@
 // +--------------------------------------------------------------------------+
 // | BXE                                                                      |
 // +--------------------------------------------------------------------------+
-// | Copyright (c) 2003,2004 Bitflux GmbH                                     |
+// | Copyright (c) 2003-2008 Liip AG                                          |
 // +--------------------------------------------------------------------------+
 // | Licensed under the Apache License, Version 2.0 (the "License");          |
 // | you may not use this file except in compliance with the License.         |
@@ -13,7 +13,7 @@
 // | See the License for the specific language governing permissions and      |
 // | limitations under the License.                                           |
 // +--------------------------------------------------------------------------+
-// | Author: Christian Stocker <chregu@bitflux.ch>                            |
+// | Author: Christian Stocker <chregu@liip.ch>                            |
 // +--------------------------------------------------------------------------+
 //
 // $Id$
@@ -1333,7 +1333,7 @@ function bxe_draw_widgets() {
     
 	var submenu4 = new Array();
 	
-	submenu4.push(bxe_i18n.getText("About Bitflux Editor"),function(e) { 
+	submenu4.push(bxe_i18n.getText("About BXE"),function(e) { 
 		bxe_about_box.setText("");
 		bxe_about_box.show(true);
 		
@@ -1952,7 +1952,7 @@ function bxe_catch_alert(e ) {
 }
 
 function bxe_catch_alert_message(e) {
-	var mes = "ERROR in Bitflux Editor:" + "\n" + e.message +"\n";
+	var mes = "ERROR in BXE:" + "\n" + e.message +"\n";
 	try
 	{
 		if (e.filename) {

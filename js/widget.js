@@ -540,7 +540,7 @@ Widget_MenuList.prototype.appendItem = function(label, value) {
 
 function Widget_ToolBarButton (id,namespaceURI) {
 	this.node = this.initNode("div","ToolBarButton",id);
-	this.node.setAttribute("title",id);
+	this.node.setAttribute("title",bxe_i18n.getText(id));
 	this.Display = "block";
 	var buttons = bxe_config.getButtons();
 	var col =  buttons[id]['col'];

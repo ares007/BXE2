@@ -57,8 +57,8 @@
 	<message key="Table is not allowed here"></message>
 	<message key="Create Table">Cr&#233;er un tableau</message>
 	<message key="Can't create table: invalid data">Impossible de cr&#233;er le tableau: donn&#233;es invalides</message>
-	<message key="number of rows">nombre de colonnes</message>
-	<message key="number of cols">nombre de lignes</message>
+	<message key="number of rows">nombre de lignes</message>
+	<message key="number of cols">nombre de colonnes</message>
 	<message key="Enter a URL:">Entrez l\'URL:</message>
 	<message key="ERROR in Bitflux Editor:">Erreur dans Bitflux Editor:</message>
 	<message key="In File: ">Dans le fichier: </message>
