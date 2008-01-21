@@ -61,6 +61,7 @@
             <!-- the language file -->
             <!-- optional, if you want just english, you don't need it -->
             <!-- <file name="BX_langfile">../../lang/fr.xml</file> -->
+			<file name="BX_langfile">../../lang/de.xml</file>
         </input>
         <output>
             <file name="BX_exitdestination">../../index.html</file>
