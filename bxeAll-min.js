@@ -310,7 +310,7 @@ this.node.options[this.node.options.length]=B;
 return B
 };
 function Widget_ToolBarButton(id,namespaceURI){this.node=this.initNode("div","ToolBarButton",id);
-this.node.setAttribute("title",id);
+this.node.setAttribute("title",bxe_i18n.getText(id));
 this.Display="block";
 var buttons=bxe_config.getButtons();
 var col=buttons[id]["col"];
@@ -4350,7 +4350,7 @@ j<bxe_config.menus[i].menus.length;
 j++){_sub.push(bxe_config.menus[i].menus[j].name,eval(bxe_config.menus[i].menus[j].value))
 }bxe_menubar.addMenu(bxe_config.menus[i].name,_sub)
 }var submenu4=new Array();
-submenu4.push(bxe_i18n.getText("About Bitflux Editor"),function(e){bxe_about_box.setText("");
+submenu4.push(bxe_i18n.getText("About BXE"),function(e){bxe_about_box.setText("");
 bxe_about_box.show(true)
 });
 submenu4.push(bxe_i18n.getText("Help"),function(e){bla=window.open("http://wiki.bitfluxeditor.org/BXE_2.0","help","width=800,height=600,left=0,top=0");
@@ -4595,7 +4595,7 @@ return
 drawertool.openDrawer("liblinkdrawer");
 return 
 }function bxe_catch_alert(A){alert(bxe_catch_alert_message(A))
-}function bxe_catch_alert_message(B){var A="ERROR in Bitflux Editor:\n"+B.message+"\n";
+}function bxe_catch_alert_message(B){var A="ERROR in BXE:\n"+B.message+"\n";
 try{if(B.filename){A+=("In File: ")+B.filename+"\n"
 }else{A+=("In File: ")+B.fileName+"\n"
 }}catch(B){A+=("In File: ")+B.fileName+"\n"
