@@ -942,7 +942,7 @@ Widget_MenuPopup.prototype.appendAllowedSiblings = function( node, parentSub) {
 	
 	for (i = 0; i < ac.length; i++) {
 		if (ac[i].nodeType != 3 &&  !ac[i].vdom.bxeDontshow  && !ac[i].vdom.bxeNoaddappenddelete && ac[i].vdom.bxeTabletype != "table-row"  && ac[i].vdom.bxeTabletype != "table-col" ) { // && !bxe_config.dontShowInContext[ac[i].namespaceURI + ":" +ac[i].localName]
-			if (i == 0 || (ac[i].localName != ac[i-1].localName && ac[i].namespaceURI != ac[i-1].namespaceURI )) {
+			if (i == 0 || !(ac[i].localName == ac[i-1].localName && ac[i].namespaceURI == ac[i-1].namespaceURI )) {
 				if (ac[i].vdom.bxeHelptext) {
 					var _helptext = ac[i].vdom.bxeHelptext;
 				} else {
