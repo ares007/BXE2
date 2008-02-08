@@ -530,7 +530,7 @@ this.Popup._node=D
 Widget_MenuPopup.prototype.appendAllowedSiblings=function(D,A){var C=D.XMLNode.allowedNextSiblingsSorted;
 for(i=0;
 i<C.length;
-i++){if(C[i].nodeType!=3&&!C[i].vdom.bxeDontshow&&!C[i].vdom.bxeNoaddappenddelete&&C[i].vdom.bxeTabletype!="table-row"&&C[i].vdom.bxeTabletype!="table-col"){if(i==0||(C[i].localName!=C[i-1].localName&&C[i].namespaceURI!=C[i-1].namespaceURI)){if(C[i].vdom.bxeHelptext){var F=C[i].vdom.bxeHelptext
+i++){if(C[i].nodeType!=3&&!C[i].vdom.bxeDontshow&&!C[i].vdom.bxeNoaddappenddelete&&C[i].vdom.bxeTabletype!="table-row"&&C[i].vdom.bxeTabletype!="table-col"){if(i==0||!(C[i].localName==C[i-1].localName&&C[i].namespaceURI==C[i-1].namespaceURI)){if(C[i].vdom.bxeHelptext){var F=C[i].vdom.bxeHelptext
 }else{var F=false
 }var B=this.addMenuItem(C[i].vdom.bxeName.replace(/ /g,STRING_NBSP),function(H){var G=H.currentTarget.Widget;
 eDOMEventCall("appendNode",document,{"appendToNode":G.AppendToNode,"localName":G.InsertLocalName,"namespaceURI":G.InsertNamespaceURI})
