@@ -355,7 +355,7 @@ function bxe_table_insert(id)
 }
 
 function bxe_table_InsertTableOnNew(node) {
-	bxe_InsertTableCallback(node);
+	return bxe_InsertTableCallback(node);
 }
 
 function bxe_table_InsertRowOnNew(node) {
@@ -454,57 +454,7 @@ function bxe_table_createTableFinishInitRows(te,rowInfo, noRows, noColumns) {
 function bxe_table_newtable(id)
 {
 	alert("bxe_table_newtable. this part is commented out. please report if still needed");
-	/*
-	if (BX_popup.style.visibility != 'visible')
-	{
-		return;
-	}
 	
-	var TRows = document.getElementById("bxe_tabelle").rows.value;
-	var TCols = document.getElementById("bxe_tabelle").cols.value;
-	BX_popup_hide();
-	var table = BX_xml.doc.createElementNS("http://www.w3.org/1999/xhtml","informaltable");
-	//<cope>
-	
-	
-	table.setAttribute("borderlines", "yes");
-	table.setAttribute("colheaders", "yes");
-	
-	//</cope>
-	BX_node_insertID(table);
-	var tgroup = BX_xml.doc.createElementNS("http://www.w3.org/1999/xhtml","tgroup");
-	BX_node_insertID(tgroup);
-	var tbody = BX_xml.doc.createElementNS("http://www.w3.org/1999/xhtml","tbody");
-	BX_node_insertID(tbody);
-	tgroup.appendChild(tbody);
-	table.appendChild(tgroup);
-	for (var i  = 0; i < TRows; i++)
-	{
-		var trElement = BX_xml.doc.createElementNS("http://www.w3.org/1999/xhtml","tr");
-		BX_node_insertID(trElement);
-		for (var j  = 0; j < TCols; j++)
-		{
-			var tdElement = trElement.createNewTableCell();
-			trElement.appendChild(tdElement)
-		}
-		var tr = tbody.appendChild(trElement);
-	}
-	// <cope>
-	if (id) {
-		var node = BX_getElementByIdClean(id,document);
-		BX_range.collapse(true);
-		BX_range.setEndAfter(node);
-		BX_range.setStartAfter(node);
-	}
-	// </cope>
-	BX_range.extractContents();
-	
-	BX_insertContent(table);
-	BX_selection.collapse(table.firstChild.firstChild.firstChild.firstChild.firstChild,0);
-	BX_transform();
-	BX_update_buttons = true;
-	BX_addEvents();
-	*/
 	
 }
 
@@ -551,25 +501,6 @@ function bxe_table_insert_row_or_col(roworcol)
 	BX_popup.style.top=BX_popup.offsetTop - 1 + "px";
 	
 }
-/*
-function bxe_table_find_current_cell()
-{
-	
-	var cell = BX_range.startContainer.parentNode;
-	//current range points not to td-node... try to dive up
-	while(cell.nodeName.toLowerCase() != "xhtml:td")
-	{
-		cell = cell.parentNode;
-		if(cell.nodeName.toLowerCase() == "page")
-		{
-			return false;
-		}
-	}
-	
-	return cell;
-	
-}*/
-
 function bxe_table_insert_row(cell)
 {
 	
@@ -925,148 +856,6 @@ function bxe_table_getRowAndColPosition(cell) {
 	pos['matrix'] = matrix;
 	return pos;
 }
-//<cope>
-// needed???
-/*
-function BX_tableCellAttributesChanged(node, attr_name, attr_value) {
-	
-	var cell = node;
-	var row = cell.parentNode;
-	var tbody = row.parentNode;
-	var table = tbody.parentNode.parentNode;
-	var matrix = bxe_createTableMatrix(cell);
-	var colpos = 0;
-	var colpos = 0;
-	var ii = 0;
-	//lets find out in which col we are
-	for (var i = 0; i < tbody.childNodes.length; i++) {
-		if(tbody.childNodes[i].nodeName.toLowerCase() != "tr") continue;
-		ii++;
-		if (tbody.childNodes[i] == row) {
-			rowPos = ii;
-			break;
-		}
-	}
-	var matrixRowVector = matrix[rowPos];
-	for (var i = 1; i < matrixRowVector.length; i++) {
-		if(cell == matrixRowVector[i][1]) {
-			//hui, we found the cell!
-			colPos = i;
-			break;
-		}
-	}
-	if(colPos == 0) {
-		alert("ERROR: could not find the cell in matrix!");
-		alert("rowPos: "+rowPos);
-		return;
-	}
-	var rowspan = bxe_table_getSpanCount(node.getAttribute("rowspan"));
-	var colspan = bxe_table_getSpanCount(node.getAttribute("colspan"));
-	var old_rowspan = rowspan;
-	var old_colspan = colspan;
-	
-	var old_span = node.getAttribute(attr_name)-0;
-	var new_span = attr_value -0;
-	
-	if(new_span < 1) {
-		alert("Sorry, a span must be at least 1!");
-		BX_down();
-		return;
-		
-	}
-	
-	if(new_span > old_span) {
-		if(attr_name == "colspan") {
-			old_rowspan = 1;
-			colspan = new_span;
-		} else {
-			old_colspan = 1;
-			rowspan = new_span;
-		}
-		//we have to delete table cell by collecting their content to the current cell
-		//lets check to boundary
-		//which could be table boundary are overlaping other spans!
-		for(var y = old_rowspan-1; y < rowspan; y++) {
-			if(rowPos + y > matrix[0][0][0]) {
-				alert("Sorry, your rowspan overlaps the table boundary!");
-				BX_down();
-				return;
-			}
-			for(var x = old_colspan-1; x < colspan; x++) {
-				if(colPos + x > matrix[0][0][1]) {
-					alert("Sorry, your colspan overlaps the table boundary!");
-					BX_down();
-					return;
-				}
-				if(matrix[rowPos+y][colPos+x][0] > 1) {
-					if(
-						matrix[rowPos+y][colPos+x][2] != matrix[rowPos][colPos][2] ||
-					matrix[rowPos+y][colPos+x][3] != matrix[rowPos][colPos][3]
-					) {
-						//ups, we touched a boundary
-						alert("Sorry, your span area overlaps with an other spaned area!");
-						BX_down();
-						return;
-					}
-				}
-			}
-		}
-		//if we reached this point, the new spaned area is valid!
-		for(var y = old_rowspan-1; y < rowspan; y++) {
-			for(var x = old_colspan-1; x < colspan; x++) {
-				if(x > 0 || y > 0) {
-					if(matrix[rowPos+y][colPos+x][0] > 0 && matrix[rowPos+y][colPos+x][0] < 3) {
-						for(var i=0; i < matrix[rowPos+y][colPos+x][1].childNodes.length; i++) {
-							matrix[rowPos][colPos][1].appendChild(matrix[rowPos+y][colPos+x][1].childNodes[i]);
-						}
-					}
-					matrix[rowPos+y][colPos+x][0] = 3;
-					matrix[rowPos+y][colPos+x][1] = false;
-					matrix[rowPos+y][colPos+x][2] = rowPos;
-					matrix[rowPos+y][colPos+x][3] = colPos;
-				}
-			}
-		}
-		matrix[rowPos][colPos][2] = rowPos;
-		matrix[rowPos][colPos][3] = colPos;
-		if(attr_name == "colspan") {
-			matrix[rowPos][colPos][1].setAttribute("colspan", new_span);
-		} else {
-			matrix[rowPos][colPos][1].setAttribute("rowspan", new_span);
-		}
-		
-		
-	} else {
-		//we create new cells because the old span is reduced
-		if(new_span < old_span) {
-			for(var y = 0; y < old_rowspan; y++) {
-				for(var x = 0; x < old_colspan; x++) {
-					if( (attr_name == "rowspan" && y >= new_span) || (attr_name == "colspan" && x >= new_span)) {
-						matrix[rowPos+y][colPos+x][0] = 1;
-						matrix[rowPos+y][colPos+x][1] = bxe_createNewTableCell();
-					}
-				}
-			}
-			if(attr_name == "colspan") {
-				matrix[rowPos][colPos][1].setAttribute("colspan", new_span);
-			} else {
-				matrix[rowPos][colPos][1].setAttribute("rowspan", new_span);
-			}
-			
-		} else {
-			//nothing to do -- hui fine, code seams somewhat struwelig.
-			//its because of the hefeweize bei 30 grad and empty stomage!
-		}
-	}
-	bxe_rebuildTableByTableMatrix(cell, matrix);
-	
-	//BX_range.setEnd(cell,0);
-	//BX_range.setStart(cell,0);
-	//BX_transform();
-	return;
-	
-}
-*/
 
 function bxe_createInitialTableMatrix(rows, cols) {
 	

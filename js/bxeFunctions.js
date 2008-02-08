@@ -1754,7 +1754,7 @@ function bxe_InsertTableCallback(replaceNode) {
 	mod.addItem("rows",2,"textfield",bxe_i18n.getText("number of rows"));
 	mod.addItem("cols",2,"textfield",bxe_i18n.getText("number of cols"));
 	mod.show(100,50, "fixed");
-	
+	return true;
 }
 
 function bxe_CleanInline(e) {
