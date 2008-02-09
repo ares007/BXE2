@@ -4526,7 +4526,8 @@ bxe_Transform()
 });
 A.addItem("rows",2,"textfield",bxe_i18n.getText("number of rows"));
 A.addItem("cols",2,"textfield",bxe_i18n.getText("number of cols"));
-A.show(100,50,"fixed")
+A.show(100,50,"fixed");
+return true
 }function bxe_CleanInline(A){bxe_CleanInlineIntern()
 }function bxe_CleanInlineIntern(G,J,K){if(!K){K=0
 }K++;
@@ -5138,7 +5139,7 @@ BX_popup_addHtml(A)
 BX_popup_addHtml(A)
 }BX_removeEvents();
 BX_popup_show()
-}function bxe_table_InsertTableOnNew(A){bxe_InsertTableCallback(A)
+}function bxe_table_InsertTableOnNew(A){return bxe_InsertTableCallback(A)
 }function bxe_table_InsertRowOnNew(A){alert("bxe_table_InsertRowOnNew is deprecated!");
 var B=bxe_config.doc.createElement("td");
 B=A._node.appendChild(B);
