@@ -3135,15 +3135,21 @@ C.statusText="OK"
 }return C
 };
 mozileTransportDriver_http.prototype.loadCallback=function(C){var B=C.currentTarget;
-var D=B.td;
-if(!D){D=bxe_config.td
+var E=B.td;
+if(!E){E=bxe_config.td
 }var A=new Object();
-if(B.getElementsByTagNameNS("http://www.mozilla.org/newlayout/xml/parsererror.xml","parsererror").length==0){A.document=B;
+if(B.getElementsByTagNameNS("http://www.mozilla.org/newlayout/xml/parsererror.xml","parsererror").length==0){try{B.documentElement.nodeName
+}catch(C){var D=document.implementation.createDocument("","",null);
+D.appendChild(D.adoptNode(B.documentElement,true));
+D.td=B.td;
+D.loader=B.loader;
+B=D
+}A.document=B;
 A.isError=false;
 A.status=200;
 A.statusText="OK"
-}else{A=D.container.parseResponseXML(B)
-}D.loadCallback(A)
+}else{A=E.container.parseResponseXML(B)
+}E.loadCallback(A)
 };
 mozileTransportDriver_http.prototype.parseResponseXML=function(F,A){var D=new Object();
 var E=F.getElementsByTagNameNS("http://www.mozilla.org/newlayout/xml/parsererror.xml","parsererror")[0];
@@ -6516,6 +6522,10 @@ function DocumentVDOM(){}DocumentVDOM.prototype=new NodeVDOM();
 DocumentVDOM.prototype.parseSchema=function(){if(!this.xmldoc.documentElement){bxe_alert("Something went wrong during importing the Validation/RelaxNG document\n.See console for details.");
 bxe_dump("RNG Doc:"+this.xmldoc.saveXML());
 return false
+}try{this.xmldoc.documentElement.localName
+}catch(A){var B=document.implementation.createDocument("","",null);
+B.appendChild(B.adoptNode(this.xmldoc.documentElement,true));
+this.xmldoc=B
 }if(this.xmldoc.documentElement.localName=="schema"&&this.xmldoc.documentElement.namespaceURI=="http://www.w3.org/2001/XMLSchema"){alert("XML Schema validation is not supported. You have to use Relax NG")
 }else{if(this.xmldoc.documentElement.localName=="grammar"&&this.xmldoc.documentElement.namespaceURI=="http://relaxng.org/ns/structure/1.0"){this.parseRelaxNG()
 }else{bxe_alert("Validation/RelaxNG document is not valid.\n See console for details.");
