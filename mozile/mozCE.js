@@ -306,7 +306,8 @@ Selection.prototype.deleteSelection = function(backspace, makeDefault)
 			var par = startC.parentNode
 			
 			
-			var lala = par.XMLNode._node; 
+			var lala = par.XMLNode._node;
+			lala.betterNormalize(); 
 			par.edited = true ;
 			if (lala.nodeType == 2) {
 				lala.value =  par.getContent();
