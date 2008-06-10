@@ -3344,6 +3344,7 @@ K=documentCreateInsertionPoint(A.top,A.startContainer,A.startOffset)
 if(Q){var I=A.startContainer;
 var T=I.parentNode;
 var P=T.XMLNode._node;
+P.betterNormalize();
 T.edited=true;
 if(P.nodeType==2){P.value=T.getContent()
 }else{var E=bxe_getChildPosition(I);
