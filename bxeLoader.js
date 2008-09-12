@@ -19,7 +19,7 @@
 // $Id$
 
 var BXE_VERSION = "2.0-dev";
-var BXE_BUILD = "200806100300"
+var BXE_BUILD = "200809120300"
 var BXE_REVISION = "$Rev$".replace(/\$Rev: ([0-9]+) \$/,"r$1");
 var bxe_loadMin = false;
 var bxe_notSupportedText = "BXE only works with Mozilla >= 1.4 / Firefox on any platform. \nCurrently we recommend Mozilla 1.6 or Firefox 1.0.";
