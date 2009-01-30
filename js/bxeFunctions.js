@@ -36,7 +36,7 @@ function __bxeSave(e) {
 		alert (bxe_i18n.getText("THIS DOCUMENT COULD NOT BE SAVED!\n You are using a Mozilla release with a broken XMLSerializer implementation.\n Mozilla 1.7 and Firefox 0.9/0.9.1 are known to have this bug.\n Please up- or downgrade."));
 		return false;
 	}
-
+console.log("METHOD"  + bxe_config.xmlfile_method);
 	var td = new mozileTransportDriver(bxe_config.xmlfile_method);
 	td.Docu = this;
 	if (e.additionalInfo && e.additionalInfo.exit ) {
@@ -2395,6 +2395,12 @@ function bxe_Transform(xpath, position, validateNode,wFValidityCheckLevel) {
 	bxe_dump("transformToFragment " + (new Date() - startTimer)/1000 + " sec\n");
 	
 	var bxe_area = document.getElementById("bxe_area");
+	if (!bxe_area) {
+	   bxe_area = document.getElementById("container");
+	}
+	if (!bxe_area) {
+        alert("no element with id 'bxe_area' or 'container' found");
+    } 
 	bxe_area.removeAllChildren();
 	bxe_area.style.display="none";
 	
