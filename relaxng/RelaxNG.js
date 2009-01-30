@@ -613,6 +613,9 @@ NodeVDOM.prototype.parseChildren = function(node) {
 			case "data":
 				//donothing
 				break;
+		    case "name":
+			    // handled by parseNodeNameOnElement
+				break;
 			default:
 				alert("Unknown/not-implemented RelaxNG element: " + childNodes[i].localName);
 		}
