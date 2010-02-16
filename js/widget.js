@@ -131,6 +131,7 @@ function Widget_MenuPopup(title,isSubpopup) {
 	document.getElementsByTagName("body")[0].appendChild(this.node);
 	this.Display = "block";
 	this.MenuItems = new Array();
+    this.zIndex = 3;
 }
 
 Widget_MenuPopup.prototype = new Widget();
@@ -182,6 +183,11 @@ Widget_MenuPopup.prototype.addSeparator = function (title) {
 			this.node.appendChild(sep);
 		}
 	}
+}
+
+Widget_MenuPopup.prototype.setZIndex = function (zIndex) {
+    this.zIndex = zIndex;
+    this.node.style.zIndex = zIndex;
 }
 
 Widget_MenuPopup.prototype.addMenuItem = function (label,action,helptext,icon) {
@@ -305,6 +311,7 @@ Widget_MenuItem.prototype.addMenu = function (menu,onmouseover) {
 	if (onmouseover) {
 		this.node.addEventListener("mouseover",onmouseover, false);
 	}
+    menu.setZIndex(this.MenuPopup.zIndex + 1);
 	this.node.addEventListener("mouseover",Widget_MenuItem_showSubmenu, false);
 }
 
@@ -438,8 +445,6 @@ Widget_MenuBar.prototype.addMenu = function (label, submenu) {
 	this.node.appendChild(menu.node);
 	menu.draw();
 	menu.addMenuPopup(submenu);
-	
-
 }
 
 function Widget_Menu (label, submenu) {

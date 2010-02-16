@@ -46,7 +46,7 @@ div.MenuItem:hover, div.MenuItemChecked:hover, .MenuPopupTitle {
     padding: 0px 0px 0px 0px;
     border-style: outset;
     width: 16em;
-    z-index: 10000;
+    z-index: 3;
     
      border: 1px dotted black;
 }
@@ -78,7 +78,7 @@ div.MenuItem:hover, div.MenuItemChecked:hover, .MenuPopupTitle {
     height: 16px;
     width: 100%;
     background-color:     #ff6600;
-    z-index:1000;
+    z-index:2;
     -moz-user-select: none;
     
 }
