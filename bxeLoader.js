@@ -104,7 +104,7 @@ function bxe_start(config_file,fromUrl, configArray,loadMin) {
 			for(var i=0; i<head.childNodes.length; i++)
 			{
 				var mozileLoaderRE = /(.*)bxeLoader.js$/;
-				if(head.childNodes[i].localName == "SCRIPT")
+				if(head.childNodes[i].localName && head.childNodes[i].localName.toLowerCase() == "script")
 				{
 					var src = head.childNodes[i].src;
 					var result = mozileLoaderRE.exec(src);
@@ -115,7 +115,7 @@ function bxe_start(config_file,fromUrl, configArray,loadMin) {
 					}
 				}
 			}
-			if (loadMin) {
+            if (loadMin) {
 				bxe_loadMin = true;
 				mozile_js_files = ['bxeAll-min.js'];
 			}
