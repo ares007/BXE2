@@ -5,98 +5,251 @@
 >
 
 <!-- START -->
+	<!-- this is the central grammar of dpd v1 -->
+	<!-- detailled product description, version 1 -->
 	<start>
 	
 		<element name="document">
 			<bxe:name>Document</bxe:name>
 			
 			<element name="header">
+				<attribute name="catalog">
+					<bxe:defaultcontent>main</bxe:defaultcontent>
+					<choice>
+						  <value type="string">main</value>
+						  <value type="string">supplies</value>
+						  <value type="string">bcs</value>
+					</choice>										
+				</attribute>
+				<attribute name="module">
+					<bxe:defaultcontent>PE</bxe:defaultcontent>
+					<choice>
+						  <value type="string">DR</value>
+						  <value type="string">EZ</value>
+						  <value type="string">KA</value>
+						  <value type="string">MO</value>
+						  <value type="string">MS</value>
+						  <value type="string">MT</value>
+						  <value type="string">PC</value>						  
+						  <value type="string">PE</value>
+						  <value type="string">PP</value>
+						  <value type="string">RK</value>
+						  <value type="string">SK</value>
+						  <value type="string">SL</value>
+						  <value type="string">SM</value>
+						  <value type="string">ST</value>
+						  <value type="string">VB</value>
+						  <value type="string">ER</value>
+						  <value type="string">LI</value>
+						  <value type="string">DL</value>
+						  <value type="string">NS</value>						  						  						  						  
+					</choice>										
+				</attribute>
+				<attribute name="infopage">
+					<bxe:defaultcontent>no</bxe:defaultcontent>
+					<choice>
+						  <value type="string">no</value>
+						  <value type="string">yes</value>
+					</choice>
+				</attribute>
+				<attribute name="color_schema">
+					<bxe:defaultcontent>auto</bxe:defaultcontent>
+					<choice>
+						  <value type="string">auto</value>
+						  <value type="string">manual</value>
+					</choice>										
+				</attribute>		
+				<attribute name="layout">
+					<bxe:defaultcontent>4-rows</bxe:defaultcontent>
+					<choice>
+						  <value type="string">4-rows</value>
+						  <value type="string">3-rows</value>
+					</choice>										
+				</attribute>
+				<attribute name="orientation">
+					<bxe:defaultcontent>right</bxe:defaultcontent>
+					<choice>
+						  <value type="string">left</value>
+						  <value type="string">right</value>
+					</choice>										
+				</attribute>
+				<attribute name="show_table_headers">
+					<bxe:defaultcontent>no</bxe:defaultcontent>
+					<choice>
+						  <value type="string">yes</value>
+						  <value type="string">no</value>
+					</choice>										
+				</attribute>
+				<attribute name="show_grid">
+					<bxe:defaultcontent>yes</bxe:defaultcontent>
+					<choice>
+						  <value type="string">yes</value>
+						  <value type="string">no</value>
+					</choice>										
+				</attribute>
+				<attribute name="show_de_control_layer">
+					<bxe:defaultcontent>no</bxe:defaultcontent>
+					<choice>
+						  <value type="string">yes</value>
+						  <value type="string">no</value>
+					</choice>										
+				</attribute>
+				
 				<bxe:name>Header</bxe:name>
 				<element name="shorttitle">
 					<bxe:name>Short Title</bxe:name>
+					<bxe:defaultcontent>Short Title...</bxe:defaultcontent>
 					<text/>
 				</element>
-				<element name="subs">
-					<bxe:name>Subs</bxe:name>
-					<zeroOrMore>
-						<ref name="_ilink"/>
-					</zeroOrMore>
-				</element>
+				
 				<element name="keywords">
 					<bxe:name>Keywords</bxe:name>
+					<bxe:defaultcontent>Keywords...</bxe:defaultcontent>
 					<text/>
 				</element>
+				
 				<optional>
 					<element name="specials">
 						<bxe:name>Specials</bxe:name>
 						<text/>
 					</element>
 				</optional>
+				
 				<element name="docnotes">
 					<bxe:name>Document Notes</bxe:name>
+					<bxe:defaultcontent>Document Notes...</bxe:defaultcontent>
 					<text/>
 				</element>
 				
+				<element name="data">
+					<!-- Internal Data Container-->
+					<bxe:name>Data</bxe:name>
+					<bxe:noteditable/>
+					
+					<!-- AUTO COMPLETE elements -->
+					
+					<element name="page_referers">
+						<bxe:name>Page Referers</bxe:name>
+						<bxe:noteditable/>
+						<zeroOrMore>
+							<element name="page_referer">
+								<bxe:name>Referer</bxe:name>
+								<bxe:noteditable/>
+								<element name="text">
+									<text/>
+								</element>
+								<element name="page_title">
+									<text/>
+								</element>
+								<element name="page_object_id">
+									<text/>
+								</element>
+								<element name="refer_to">
+                                    <text/>
+                                </element>
+								<text/>
+							</element>
+						</zeroOrMore>
+					</element>
+					
+					<element name="product_ids">
+						<bxe:name>Product IDs</bxe:name>
+						<bxe:noteditable/>
+						<zeroOrMore>
+							<element name="id">
+								<bxe:name>ID</bxe:name>
+								<bxe:noteditable/>
+								<text/>
+							</element>
+						</zeroOrMore>
+					</element>
+					
+					<element name="price_product_ids">
+						<bxe:name>Price Product IDs</bxe:name>
+						<bxe:noteditable/>
+						<zeroOrMore>
+							<element name="id">
+								<bxe:name>ID</bxe:name>
+								<bxe:noteditable/>
+								<text/>
+							</element>
+						</zeroOrMore>
+					</element>
+
+					<element name="manufacturer_ids">
+						<bxe:name>Manufacturer IDs</bxe:name>
+						<bxe:noteditable/>
+						<zeroOrMore>
+							<element name="id">
+								<bxe:name>ID</bxe:name>
+								<bxe:noteditable/>
+								<text/>
+							</element>
+						</zeroOrMore>
+					</element>
+
+					<element name="keywords">
+						<bxe:name>Keywords</bxe:name>
+						<bxe:noteditable/>
+						<zeroOrMore>
+							<element name="keyword">
+								<bxe:name>Keyword</bxe:name>
+								<bxe:noteditable/>
+								<text/>
+							</element>
+						</zeroOrMore>
+					</element>
+					
+					<element name="translation_states">
+						<bxe:name>Translation Stati</bxe:name>
+						<bxe:noteditable/>
+						<zeroOrMore>
+							<element name="entry">
+								<bxe:name>Entry</bxe:name>
+								<bxe:noteditable/>
+								<element name="language">
+									<bxe:name>Language</bxe:name>
+									<bxe:noteditable/>
+									<text/>
+								</element>
+								<element name="status">
+									<bxe:name>Status</bxe:name>
+									<bxe:noteditable/>
+									<text/>
+								</element>
+							</element>
+						</zeroOrMore>
+					</element>
+					
+					<element name="alteration_status">
+						<bxe:name>Alteration Status</bxe:name>
+						<bxe:noteditable/>
+						<text/>
+					</element>
+					
+					<!-- AUTO COMPLETE elements -->
+					
+				</element>
 			</element>
 			
 			<element name="content">
-				<bxe:name>Document Content</bxe:name>
+				<bxe:name>Content</bxe:name>
+				
 				<element name="title">
-					<bxe:name>Document Title</bxe:name>
-					<text/>
-				</element>
-				<element name="abstract">
-					<bxe:name>Document Abstract</bxe:name>
+					<bxe:name>Title</bxe:name>
+					<bxe:noteditable/>
+					<bxe:defaultcontent>New Page Title (change it)</bxe:defaultcontent>
+					<bxe:helptext>This text will be automatically changed to uppercase in preview/view mode!</bxe:helptext>
 					<text/>
 				</element>
 		
 				<oneOrMore>
-					<element name="page">
-						<bxe:name>Page</bxe:name>
-						<ref name="_coid"/>
-						
-						<oneOrMore>
-							<element name="article">
-								<bxe:name>Article</bxe:name>
-								<ref name="_coid"/>
-								
-								<oneOrMore>
-									<element name="collection">
-										<bxe:name>Collection</bxe:name>
-										<ref name="_coid"/>
-										
-										<attribute name="layout">
-											<bxe:defaultcontent>col</bxe:defaultcontent>
-											<choice>
-											      <value type="string">col</value>
-											      <value type="string">row</value>
-											</choice>										
-										</attribute>
-										<oneOrMore>
-											<element name="block">
-												<bxe:name>Block</bxe:name>
-												<ref name="_coid"/>
-												
-												<attribute name="align">
-													<bxe:defaultcontent>left</bxe:defaultcontent>
-													<choice>
-													      <value type="string">#align</value> <!-- deprecated -->
-													      <value type="string">left</value>
-													      <value type="string">right</value>
-													</choice>										
-												</attribute>
-												
-												<oneOrMore>
-													<ref name="_div_type"/>
-												</oneOrMore>
-											</element>
-										</oneOrMore>
-									</element>
-								</oneOrMore>
-							</element>
-						</oneOrMore>
-					</element>
+					<choice>
+						<ref name="_horizontal_box"/>
+						<ref name="_infobox"/>
+					</choice>
 				</oneOrMore>
+				
 			</element>
 		
 		</element>
@@ -108,146 +261,476 @@
 
 <!-- DEFINITIONS -->
 
-	<define name="_coid">
-		<attribute name="coid">
-			<!-- 2do -->
-			<data type="NCName"/>
-            <bxe:onnew type="function" >cope2_set_coid</bxe:onnew>
-            <bxe:noteditable/>
-		</attribute>
+<!-- span type definitions -->
+	
+	<define name="_span_atom">
+		<choice>
+			<ref name="_elink"/>
+			<ref name="_linebreak"/>
+			<ref name="_linebreak_soft"/>
+			<ref name="_color_scheme"/>
+			<ref name="_featureslist"/>
+			<ref name="_docnote"/>
+			<ref name="_system"/>
+		</choice>
 	</define>
-
+	<define name="_span_type">
+		<choice>
+			<ref name="_nowrap"/>
+			<ref name="_bold"/>
+			<ref name="_emphasize"/>
+			<ref name="_subscript"/>
+			<ref name="_superscript"/>
+		</choice>
+	</define>
+	
+	<define name="_text_type">
+		<oneOrMore>
+			<choice>
+				<text/>
+				<ref name="_span_atom"/>
+				<ref name="_span_type"/>
+			</choice>
+		</oneOrMore>
+	</define>
+	
+	<define name="_block_text">
+        <oneOrMore>
+            <choice>
+                <text/>
+                <ref name="_linebreak_soft"/>
+            </choice>
+        </oneOrMore>
+    </define>
+	
 <!-- div (block) type definitions -->
 
 	<define name="_div_type">
 		<choice>
-			<ref name="_spacer"/>
-			<ref name="_para"/>
+			<ref name="_ruler"/>
+			<ref name="_blocktitle"/>
+			<ref name="_logo"/>
+			<ref name="_multilingual_image"/>
 			<ref name="_paraheadline"/>
-			<ref name="_itemizedlist"/>
-			<ref name="_orderedlist"/>
-			<ref name="_table"/>
+			<ref name="_para"/>
+			<ref name="_legend"/>
+			<ref name="_spacer"/>
+			<ref name="_pagereferer"/>
+			<ref name="_infolabel"/>
+			<ref name="_product_image"/>
+			<ref name="_product_images"/>
+			<!--<ref name="_featureslists"/>-->
+			<ref name="_featureslist"/>
+			<ref name="_order_table_v"/>
+			<ref name="_order_table_h"/>
+			<ref name="_accessories_table"/>
 			<ref name="_media"/>
-			<ref name="_download"/>
-			<ref name="_news"/>
-			<ref name="_systemhouse"/>
-			<ref name="_competencecenter"/>
-			
-			<!-- the following elements are staticly rendered by xsl transformation... -->
-				<element name="news_overview_navigator">
-					<bxe:name>News Overview Navigator</bxe:name>
-					<bxe:childsnoteditable/>
-					<text/>
-				</element>
-				<element name="news_preview_navigator">
-					<bxe:name>News Preview Navigator</bxe:name>
-					<bxe:childsnoteditable/>
-					<text/>
-				</element>
-				<element name="systemhousenavigator">
-					<bxe:name>Systemhouses Navigator</bxe:name>
-					<bxe:childsnoteditable/>
-					<text/>
-				</element>
-				<element name="competencecenternavigator">
-					<bxe:name>CompetenceCenter Navigator</bxe:name>
-					<bxe:childsnoteditable/>
-					<text/>
-				</element>
-				<element name="bechtleshopnavigator">
-					<bxe:name>Shops Navigator</bxe:name>
-					<bxe:childsnoteditable/>
-					<text/>
-				</element>
-				<element name="roadmaps_navigator">
-					<bxe:name>Roadmaps Navigator</bxe:name>
-					<bxe:childsnoteditable/>
-					<text/>
-				</element>
-				<element name="xform">
-					<bxe:name>Formular...</bxe:name>
-					<bxe:childsnoteditable/>
-					<attribute name="type">
-						<bxe:defaultcontent>contact_standard</bxe:defaultcontent>
-						<choice>
-						      <value type="string">contact_standard</value>
-						      <value type="string">ir_mailservice</value>
-						      <value type="string">press_mailservice</value>
-						</choice>										
-					</attribute>
-					<attribute name="recipient">
-						<bxe:defaultcontent>info@bechtle.com</bxe:defaultcontent>
-						<text/>
-					</attribute>
-					<text/>
-				</element>
-				<element name="chart-xpose">
-					<bxe:name>Bechtle Chart Viewer</bxe:name>
-					<bxe:childsnoteditable/>
-					<text/>
-				</element>
-				
-			<!-- END -->
-			
-			<ref name="_person"/>
-			<ref name="_address"/>
-			<!-- 'roadmap' element currently only exists within an address -->
+			<ref name="_layer"/>
 			<ref name="_docnote"/>
-			<ref name="_system"/>
+			<!--<ref name="_system"/>-->
 		</choice>
+	</define>
+	
+	<define name="_horizontal_box">
+		<element name="horizontal_box">
+			<bxe:name>Horizontal Box</bxe:name>
+			<bxe:helptext>This element includes 1 to 4 blocks to be displayed from left to right or inside to outside of the page's boundaries.</bxe:helptext>
+			<attribute name="layout">
+				<bxe:defaultcontent>left-to-right</bxe:defaultcontent>
+				<choice>
+					  <value type="string">left-to-right</value>
+					  <value type="string">inside-to-outside</value>
+				</choice>										
+			</attribute>
+			<optional>
+	     		<attribute name="bottom_space">
+	                <bxe:defaultcontent>4</bxe:defaultcontent>
+	                <text/>
+	            </attribute>
+	        </optional>    
+ 			<attribute name="vertical_delimiter">
+				<bxe:defaultcontent>no</bxe:defaultcontent>
+				<choice>
+					  <value type="string">no</value>
+					  <value type="string">yes</value>
+				</choice>										
+			</attribute>
+			<attribute name="horizontal_delimiter">
+				<bxe:defaultcontent>no</bxe:defaultcontent>
+				<choice>
+					  <value type="string">no</value>
+					  <value type="string">yes</value>
+				</choice>										
+			</attribute>
+			<ref name="_block"/> <!-- at least one -->
+			<optional><ref name="_block"/></optional> <!-- up to 4 -->
+			<optional><ref name="_block"/></optional>			
+			<optional><ref name="_block"/></optional>
+		</element>		
+	</define>
+	
+	<define name="_block">
+		<element name="block">
+			<bxe:name>Block</bxe:name>
+			<bxe:helptext>Includes the visible content elements like paragraphs, lists tables. Is a sub element of the horizontal box.</bxe:helptext>
+			<attribute name="align">
+				<bxe:defaultcontent>left</bxe:defaultcontent>
+				<choice>
+					  <value type="string">left</value>
+					  <value type="string">right</value>
+					  <value type="string">inside</value>
+					  <value type="string">outside</value>
+				</choice>										
+			</attribute>
+			<attribute name="valign">
+				<bxe:defaultcontent>top</bxe:defaultcontent>
+				<choice>
+					  <value type="string">top</value>
+					  <value type="string">middle</value>
+					  <value type="string">bottom</value>
+				</choice>										
+			</attribute>
+			<attribute name="colspan">
+				<bxe:defaultcontent>1</bxe:defaultcontent>
+				<choice>
+					  <value type="string">1</value>
+					  <value type="string">2</value>
+					  <value type="string">3</value>
+					  <value type="string">4</value>
+				</choice>										
+			</attribute>
+			<oneOrMore>
+				<ref name="_div_type"/>
+			</oneOrMore>
+		</element>		
+	</define>
+	
+	<define name="_coid">
+		<attribute name="coid">
+			<bxe:onnew type="function" >cope2_set_coid</bxe:onnew>
+			<bxe:noteditable/>
+			<!-- 2do -->
+			<data type="NCName"/>
+		</attribute>
+	</define>
+	
+	<define name="_ruler">
+		<element name="ruler">
+			<bxe:name>Ruler</bxe:name>
+			<bxe:defaultcontent>ruler comment?</bxe:defaultcontent>
+			<bxe:helptext>This is a ruler. You can place it everywhere and it is only visible within the editor.</bxe:helptext>
+			<bxe:clipboard>no</bxe:clipboard>			
+			<bxe:nextelement>para</bxe:nextelement>
+			<ref name="_text_type"/>
+		</element>
 	</define>
 	
 	<define name="_para">
 		<element name="para">
 			<bxe:name>Paragraph</bxe:name>
-			<!--<bxe:onnew type="function">cope2_newPara</bxe:onnew>-->
-            <bxe:defaultcontent>New paragraph...</bxe:defaultcontent>
-			<bxe:menuentry name="test" type="function">foo</bxe:menuentry>
-            <bxe:menuentry name="Popup" type="popup">replacecontent.html</bxe:menuentry>
+			<bxe:defaultcontent>New Paragraph...</bxe:defaultcontent>
+			<bxe:onempty type="delete"/>
+			<bxe:helptext>This is a paragraph which shows text content. Inline elements like words or such can be formatted (bold, italic...).</bxe:helptext>
+			<bxe:clipboard>yes</bxe:clipboard>			
+			<bxe:nextelement>para</bxe:nextelement>
 			<ref name="_text_type"/>
 		</element>
 	</define>
 	
-	<define name="_paraheadline">
-		<element name="paraheadline">
-			<bxe:name>Paragraph Headline</bxe:name>
-			<bxe:defaultcontent>New paragraph headline...</bxe:defaultcontent>
-            <bxe:nextelement>para</bxe:nextelement>
-			<ref name="_coid"/>
-			
-			<choice>
-				<text/>
-				<group>
-					<text/>
-					<ref name="_anker"/>
-					<text/>
-				</group>
-				<group>
-					<ref name="_anker"/>
-					<text/>
-				</group>
-				<group>
-					<text/>
-					<ref name="_anker"/>
-				</group>
-			</choice>
+	<define name="_legend">
+		<element name="legend">
+			<bxe:name>Legend</bxe:name>
+			<bxe:defaultcontent>New Legend...</bxe:defaultcontent>
+			<bxe:onempty type="delete"/>
+			<bxe:helptext>This is a legend element which shows text content. Inline elements like words or such can be formatted (bold, italic...).</bxe:helptext>
+			<bxe:clipboard>yes</bxe:clipboard>			
+			<bxe:nextelement>para</bxe:nextelement>
+			<ref name="_text_type"/>
 		</element>
 	</define>
 	
-	<define name="_itemizedlist">
-		<element name="itemizedlist">
-			<bxe:name>Itemized List</bxe:name>
+	<define name="_blocktitle">
+		<element name="blocktitle">
+			<bxe:name>Block Title</bxe:name>
+			<bxe:helptext>Big Title shown as a gray box. Includes 'Main Title' rows and optional 'Sub Title' rows</bxe:helptext>
+			<optional>
+                <attribute name="bottom_space">
+                    <bxe:defaultcontent>3</bxe:defaultcontent>
+                    <text/>
+                </attribute>
+            </optional>
+			<oneOrMore>
+				<element name="maintitle">
+					<bxe:name>Main Title</bxe:name>
+					<bxe:nextelement>maintitle</bxe:nextelement>
+					<bxe:defaultcontent>New Box Main Title...</bxe:defaultcontent>
+					<bxe:nextelement>maintitle</bxe:nextelement>
+                    <ref name="_block_text"/>
+				</element>
+			</oneOrMore>
+			<optional>
+				<oneOrMore>
+					<element name="subtitle">
+						<bxe:name>Sub Title</bxe:name>
+						<bxe:nextelement>subtitle</bxe:nextelement>
+						<bxe:defaultcontent>New Box Sub Title...</bxe:defaultcontent>
+						<bxe:onempty type="delete"/>
+						<bxe:nextelement>para</bxe:nextelement>
+                        <ref name="_block_text"/>
+					</element>
+				</oneOrMore>
+			</optional>
+				
+		</element>
+	</define>
+	
+	
+	<!-- Special Page Elements -->
+ 	
+	<define name="_pagereferer">
+		<element name="pagereferer">
+			<bxe:name>Page Referer</bxe:name>
+			<bxe:helptext>A special kind of box with a textual referer to a related page. Also include an attribute for page number (use Edit Attributes).</bxe:helptext>
+			<bxe:defaultcontent>New Page Referer...</bxe:defaultcontent>
+			<bxe:nextelement>para</bxe:nextelement>
+			
+			<!--the following attribute provides two way in refering to a location with the catalog:
+				1. page_title: points to the first page with this title
+				2. page_object_id: for special cases this point directly to a specific page by its object ID
+			-->
+			<attribute name="colspan">
+				<bxe:defaultcontent>2</bxe:defaultcontent>
+				<choice>
+					  <value type="string">1</value>
+					  <value type="string">2</value>
+					  <value type="string">3</value>
+					  <value type="string">4</value>
+				</choice>										
+			</attribute>
+			<attribute name="refer_to">
+				<bxe:defaultcontent>catalogpage</bxe:defaultcontent>
+				<choice>
+					  <value type="string">catalogpage</value>
+					  <value type="string">webpage</value>
+					  <value type="string">glossary</value>
+				</choice>
+			</attribute>
+			<attribute name="page_title">
+				<bxe:defaultcontent>#</bxe:defaultcontent>
+				<text/>
+			</attribute>
+			<attribute name="page_object_id">
+				<bxe:defaultcontent>#</bxe:defaultcontent>
+				<text/>
+			</attribute>
+			<attribute name="all_countries">
+				<bxe:defaultcontent>yes</bxe:defaultcontent>
+				<choice>
+					  <value type="string">yes</value>
+					  <value type="string">no</value>
+				</choice>										
+			</attribute>
+			
+			<element name="left">
+				<bxe:name>left Text</bxe:name>
+				<bxe:defaultcontent>dies und jenes...</bxe:defaultcontent>
+				<text/>	
+			</element>			
+			<element name="right">
+				<bxe:name>right Text</bxe:name>
+				<bxe:defaultcontent>ab S.</bxe:defaultcontent>
+				<text/>	
+			</element>			
+			<element name="page_number">
+				<bxe:name>Page Number</bxe:name>
+				<bxe:defaultcontent>XYZ</bxe:defaultcontent>
+				<bxe:noteditable/>
+				<text/>	
+			</element>			
+		</element>
+	</define>
+
+	<define name="_infolabel">
+		<element name="infolabel">
+			<bxe:name>Info Label</bxe:name>
+			<bxe:helptext>A infobox: small, as page header and "new".</bxe:helptext>
+			<bxe:defaultcontent>New Info Label...</bxe:defaultcontent>
+			<bxe:nextelement>para</bxe:nextelement>
+			
+			<attribute name="colspan">
+				<bxe:defaultcontent>2</bxe:defaultcontent>
+				<choice>
+					  <value type="string">1</value>
+					  <value type="string">2</value>
+					  <value type="string">3</value>
+					  <value type="string">4</value>
+				</choice>										
+			</attribute>
+			<attribute name="variant">
+				<bxe:defaultcontent>small</bxe:defaultcontent>
+				<choice>
+					  <value type="string">small</value>
+					  <value type="string">box</value>
+					  <value type="string">new</value>
+				</choice>										
+			</attribute>
+			<attribute name="all_countries">
+				<bxe:defaultcontent>yes</bxe:defaultcontent>
+				<choice>
+					  <value type="string">yes</value>
+					  <value type="string">no</value>
+				</choice>										
+			</attribute>
+			
+			<ref name="_text_type"/>
+		</element>
+	</define>
+
+	<define name="_infobox">
+		<element name="infobox">
+			<bxe:name>Info Box</bxe:name>
+			<bxe:helptext>The huge colored box above every info page.</bxe:helptext>
+			<bxe:defaultcontent>New Info Box...</bxe:defaultcontent>
+			<bxe:nextelement>para</bxe:nextelement>
+			
+			<element name="textblock">
+				<bxe:name>Text Block</bxe:name>
+				<bxe:helptext>Text Block</bxe:helptext>
+				
+				<oneOrMore>
+					<choice>
+						<ref name="_blocktitle"/>
+						<ref name="_paraheadline"/>
+						<ref name="_para"/>
+						<ref name="_featureslist"/>
+						<ref name="_spacer"/>
+						<ref name="_product_image"/>
+						<ref name="_logo"/>
+						<ref name="_multilingual_image"/>
+					</choice>
+				</oneOrMore>
+			</element>
+			<optional>
+				<element name="imageblock">
+					<bxe:name>Image Block</bxe:name>
+					<bxe:helptext>Image Block</bxe:helptext>
+					<attribute name="align">
+						<bxe:defaultcontent>right</bxe:defaultcontent>
+						<choice>
+							  <value type="string">left</value>
+							  <value type="string">right</value>
+						</choice>										
+					</attribute>
+					<attribute name="valign">
+						<bxe:defaultcontent>top</bxe:defaultcontent>
+						<choice>
+							  <value type="string">top</value>
+							  <value type="string">middle</value>
+							  <value type="string">bottom</value>
+						</choice>										
+					</attribute>
+					<oneOrMore>
+						<choice>
+							<ref name="_media"/>
+							<ref name="_product_image"/>
+							<ref name="_logo"/>
+							<ref name="_multilingual_image"/>
+							<ref name="_para"/>
+							<ref name="_spacer"/>
+						</choice>
+					</oneOrMore>
+				</element>
+			</optional>
+		</element>
+	</define>
+	
+	<define name="_layer">
+		<element name="layer">
+			<bxe:name>Layer</bxe:name>
+			<bxe:helptext>Context Layer.</bxe:helptext>
+			<bxe:defaultcontent>New Context Layer...</bxe:defaultcontent>
+			<bxe:nextelement>para</bxe:nextelement>
+			
+			<attribute name="show_for">
+				<bxe:defaultcontent>all</bxe:defaultcontent>
+				<choice>
+					  <value type="string">all</value>
+					  <value type="string">selected</value>
+					  <value type="string">all except for</value>
+				</choice>										
+			</attribute>
+			<attribute name="country">
+				<bxe:defaultcontent>DE</bxe:defaultcontent>
+				<choice>
+					  <value type="string">all</value>
+					  <value type="string">AT</value>
+					  <value type="string">BE</value>
+					  <value type="string">CH</value>
+					  <value type="string">DE</value>
+					  <value type="string">ES</value>
+					  <value type="string">FR</value>
+					  <value type="string">IT</value>
+					  <value type="string">NL</value>
+					  <value type="string">UK</value>
+				</choice>										
+			</attribute>
+			<attribute name="language">
+				<bxe:defaultcontent>de</bxe:defaultcontent>
+				<choice>
+					  <value type="string">all</value>
+					  <value type="string">de</value>
+					  <value type="string">be</value>
+					  <value type="string">en</value>
+					  <value type="string">es</value>
+					  <value type="string">it</value>
+					  <value type="string">fr</value>
+					  <value type="string">nl</value>
+				</choice>										
+			</attribute>
 			
 			<oneOrMore>
-				<ref name="_bxlistitem"/>
+				<ref name="_div_type"/>
 			</oneOrMore>
 		</element>
 	</define>
 	
-	<define name="_orderedlist">
-		<element name="orderedlist">
-			<bxe:name>Ordered List</bxe:name>
-			
+	<!-- end of Special Page Elements -->
+	
+	<define name="_paraheadline">
+		<element name="paraheadline">
+			<bxe:name>Paragraph Headline</bxe:name>
+			<bxe:helptext>Commonly used to headline parts of the document between paragraphs.</bxe:helptext>
+			<bxe:defaultcontent>New Paragraph Headline...</bxe:defaultcontent>
+			<bxe:onempty type="delete"/>
+			<bxe:nextelement>para</bxe:nextelement>
+			<oneOrMore>
+            <choice>
+                <text/>
+                <ref name="_linebreak"/>
+            </choice>
+        </oneOrMore>
+		</element>
+	</define>
+	
+	<!-- deprecated since layout 2007-02
+	<define name="_featureslists">
+		<element name="featureslists">
+			<bxe:name>Features Lists (cols)</bxe:name>
+			<bxe:helptext>Combines one or more feature lists (or product images), diplayed as colums.</bxe:helptext>
+			<oneOrMore>
+				<choice>
+					<ref name="_featureslist"/>
+					<ref name="_product_image"/>
+				</choice>
+			</oneOrMore>
+		</element>
+	</define>
+	-->
+	<define name="_featureslist">
+		<element name="featureslist">
+			<bxe:name>Features List</bxe:name>
+			<bxe:helptext>Lists product features with bulletin.</bxe:helptext>
+			<bxe:clipboard child="bxlistitem">yes</bxe:clipboard>
 			<oneOrMore>
 				<ref name="_bxlistitem"/>
 			</oneOrMore>
@@ -257,22 +740,371 @@
 	<define name="_bxlistitem">
 		<element name="bxlistitem">
 			<bxe:name>List Item</bxe:name>
-			<bxe:defaultcontent>New list item...</bxe:defaultcontent>
+			<bxe:nextelement>bxlistitem</bxe:nextelement>
+			<bxe:defaultcontent>New List Item...</bxe:defaultcontent>
+			<bxe:onempty type="delete"/>
+			<bxe:clipboard>yes</bxe:clipboard>
 			<ref name="_text_type"/>
 		</element>
 	</define>
 
+	<define name="_freestyle_table">
+		<!--
+			a gray styled table with no semantic tagging of properties and such
+			no evaluation, no parsing for qualifiers on saving
+		-->
+		<element name="freestyle_table">
+			<bxe:name>Freestyle Table</bxe:name>
+			<bxe:tabletype>table</bxe:tabletype>
+			<bxe:onnew type="function">bxe_table_InsertTableOnNew</bxe:onnew>
+			
+			<ref name="_table"/>
+		</element>
+	</define>
+
+	<define name="_properties_table_h">
+		<!--
+			a gray styled table with semantic tagging of properties and such
+			evaluation and parsing for qualifiers on saving is done
+			to privide this functionality, a product ID col or row must be given
+			this ID col/row will NOT be rendered on view mode
+		-->
+	</define>
+	
+	<define name="_properties_table_v">
+		<!--
+			a gray styled table with semantic tagging of properties and such
+			evaluation and parsing for qualifiers on saving is done
+			to privide this functionality, a product ID col or row must be given
+			this ID col/row will NOT be rendered on view mode
+		-->
+	</define>
+
+	<define name="_order_table_h">
+		<!--
+			a mixed colored (gray + module color) table with semantic tagging of properties and such
+			ID and price cols/rows are automaticly colored
+			other cols/rows are gray, unless the special colored-attribute is set to YES
+			evaluation and parsing for qualifiers on saving is done
+			a product ID col or row must be given
+			also a price col or row must be given
+		-->
+		<element name="order_table_h">
+			<bxe:name>Order Table (horz.)</bxe:name>
+			<bxe:helptext>Order table: products horizontally (in rows).</bxe:helptext>
+			<bxe:tabletype>table</bxe:tabletype>
+			<bxe:onnew type="function">cope2_tableHorizontal_InsertTableOnNew</bxe:onnew>
+			<bxe:menuentry type="function" name="Replace all # with whitespace">cope2_tableFunction_replace</bxe:menuentry>
+			<bxe:clipboard
+				child="row"
+				grandchild="cell"
+				firstchild="colgroup"
+				firstgrandchild="col"
+				emptyfirstrow="true"
+				>true</bxe:clipboard>
+		
+			<ref name="_products_table_h"/>
+		</element>
+	</define>
+	
+	<define name="_order_table_v">
+		<!--
+			a mixed colored (gray + module color) table with semantic tagging of properties and such
+			other cols/rows are gray, unless the special colored-attribute is set to YES
+			evaluation and parsing for qualifiers on saving is done
+			a product ID col or row must be given
+			also a price col or row must be given
+		-->
+		<element name="order_table_v">
+			<bxe:name>Order Table (vert.)</bxe:name>
+			<bxe:helptext>Order table: products vertically (in columns).</bxe:helptext>
+			<bxe:tabletype>table</bxe:tabletype>
+			<bxe:onnew type="function">cope2_tableVertical_InsertTableOnNew</bxe:onnew>
+			<bxe:menuentry type="function" name="Replace all # with whitespace">cope2_tableFunction_replace</bxe:menuentry>
+			<bxe:clipboard
+				child="row"
+				grandchild="cell"
+				firstchild="colgroup"
+				firstgrandchild="col"
+				emptyfirstrow="true"
+				>true</bxe:clipboard>
+				
+			<ref name="_products_table_v"/>
+		</element>
+	</define>
+	
+	<define name="_accessories_table">
+		<!--
+			full colored (module color) table with semantic tagging of properties and such
+			this table only exists as a horizontal typed table
+			evaluation and parsing for qualifiers on saving is done
+			a product ID col or row must be given
+			also a price col or row must be given
+		-->
+		<element name="accessories_table">
+			<bxe:name>Accessories Table</bxe:name>
+			<bxe:helptext>Accessories table: product IDs vertically (in one of the columns).</bxe:helptext>
+			<bxe:tabletype>table</bxe:tabletype>
+			<bxe:onnew type="function">cope2_tableAccessories_InsertTableOnNew</bxe:onnew>
+			<bxe:menuentry type="function" name="Replace all # with whitespace">cope2_tableFunction_replace</bxe:menuentry>
+			<bxe:clipboard
+				child="row"
+				grandchild="cell"
+				firstchild="colgroup"
+				firstgrandchild="col"
+				emptyfirstrow="true"
+				>true</bxe:clipboard>
+			
+			<attribute name="reference_product_id">
+				<bxe:defaultcontent>0</bxe:defaultcontent>
+				<text/>
+			</attribute>
+			
+			<ref name="_products_table_h"/>
+		</element>
+	</define>
+
+	
+	<define name="_products_table_h">
+			<attribute name="auto_complete">
+				<bxe:defaultcontent>no</bxe:defaultcontent>
+				<choice>
+					  <value type="string">no</value>
+					  <value type="string">yes</value>
+				</choice>										
+			</attribute>
+					
+			<element name="colgroup">
+				<bxe:name>Colums</bxe:name>
+				<bxe:tabletype>table-colgroup</bxe:tabletype>
+				<bxe:noaddappenddelete>true</bxe:noaddappenddelete>
+				<oneOrMore>
+					<element name="col">
+						<bxe:name>Column</bxe:name>
+						<bxe:tabletype>table-col</bxe:tabletype>
+						<bxe:noaddappenddelete>true</bxe:noaddappenddelete>
+						<attribute name="type">
+							<bxe:defaultcontent>text</bxe:defaultcontent>
+							<choice>
+								  <value type="string">text</value>
+								  <value type="string">product ID</value>
+								  <value type="string">product name</value>
+								  <value type="string">product description</value>
+								  <value type="string">reference no</value>								  								  
+								  <value type="string">product price</value>
+								  <!-- {product_properties_attribute_types} -->
+							</choice>										
+						</attribute>
+						
+						<attribute name="width">
+							<bxe:defaultcontent>0</bxe:defaultcontent> <!-- 0 means auto width -->
+							<data type="int">
+								<param name="minInclusive">0</param>
+								<param name="maxInclusive">160</param>
+							</data>
+						</attribute>
+						
+						<attribute name="width">
+							<bxe:defaultcontent>0</bxe:defaultcontent> <!-- 0 means auto width -->
+							<data type="int">
+								<param name="minInclusive">0</param>
+								<param name="maxInclusive">160</param>
+							</data>
+						</attribute>
+						
+						<ref name="_table_cell_alignment"/>				
+					</element>
+				</oneOrMore>
+			</element>
+			<oneOrMore>
+				<element name="row">
+					<bxe:name>Table Row</bxe:name>
+					<bxe:tabletype>table-row</bxe:tabletype>
+					<bxe:onnew type="function">bxe_table_InsertRowOnNew</bxe:onnew>
+					<bxe:menuentry type="function" name="Reset empty cells">cope2_tableRowFunction_replace</bxe:menuentry>
+					
+					<attribute name="type">
+						<bxe:defaultcontent>value</bxe:defaultcontent>
+						<choice>
+							<value type="string">text</value>
+							<value type="string">header</value>
+							<value type="string">value</value>
+						</choice>										
+					</attribute>
+					
+					<ref name="_table_cell_alignment"/>
+					<ref name="_color"/>
+
+					<oneOrMore>
+						<element name="cell">
+							<bxe:name>Table Cell</bxe:name>
+							<bxe:tabletype>table-cell</bxe:tabletype>
+							<bxe:defaultcontent>#</bxe:defaultcontent>
+							<!--<bxe:onnew type="function">bxe_table_InsertCellOnNew</bxe:onnew>-->
+							
+							<ref name="_table_cell_alignment"/>
+							<ref name="_color"/>
+							
+							<attribute name="colspan">
+								<bxe:defaultcontent>1</bxe:defaultcontent>
+								<data type="int"/>
+							</attribute>
+							
+							<attribute name="rowspan">
+								<bxe:defaultcontent>1</bxe:defaultcontent>
+								<data type="int"/>
+							</attribute>
+							
+							<ref name="_text_type"/>
+							
+						</element>
+					</oneOrMore>
+				 </element>
+			 </oneOrMore>
+
+	</define>
+
+	<define name="_products_table_v">
+			<attribute name="auto_complete">
+				<bxe:defaultcontent>no</bxe:defaultcontent>
+				<choice>
+					  <value type="string">no</value>
+					  <value type="string">yes</value>
+				</choice>										
+			</attribute>
+					
+			<element name="colgroup">
+				<bxe:name>Colums</bxe:name>
+				<bxe:tabletype>table-colgroup</bxe:tabletype>
+				<bxe:noaddappenddelete>true</bxe:noaddappenddelete>
+				<oneOrMore>
+					<element name="col">
+						<bxe:name>Column</bxe:name>
+						<bxe:tabletype>table-col</bxe:tabletype>
+						<bxe:noaddappenddelete>true</bxe:noaddappenddelete>
+						
+						<attribute name="type">
+							<bxe:defaultcontent>value</bxe:defaultcontent>
+							<choice>
+								<value type="string">text</value>
+								<value type="string">header</value>
+								<value type="string">value</value>
+							</choice>										
+						</attribute>
+						
+						<attribute name="width">
+							<bxe:defaultcontent>0</bxe:defaultcontent> <!-- 0 means auto width -->
+							<data type="int">
+								<param name="minInclusive">0</param>
+								<param name="maxInclusive">160</param>
+							</data>
+						</attribute>
+						
+						<ref name="_colored"/>
+						<ref name="_brightness"/>
+						<ref name="_table_cell_alignment"/>
+						
+					</element>
+				</oneOrMore>
+			</element>
+			<oneOrMore>
+				<element name="row">
+					<bxe:name>Table Row</bxe:name>
+					<bxe:tabletype>table-row</bxe:tabletype>
+					<bxe:onnew type="function">bxe_table_InsertRowOnNew</bxe:onnew>
+					<bxe:menuentry type="function" name="Reset empty cells">cope2_tableRowFunction_replace</bxe:menuentry>
+					
+					<attribute name="type">
+						<bxe:defaultcontent>text</bxe:defaultcontent>
+						<choice>
+							  <value type="string">text</value>
+							  <value type="string">product ID</value>
+							  <value type="string">product name</value>
+							  <value type="string">product description</value>			
+							  <value type="string">reference no</value>							  				  
+							  <value type="string">product price</value>
+							  <!-- {product_properties_attribute_types} -->
+						</choice>										
+					</attribute>
+
+					<ref name="_table_cell_alignment"/>
+					<ref name="_color"/>
+						
+					<oneOrMore>
+						<element name="cell">
+							<bxe:name>Table Cell</bxe:name>
+							<bxe:tabletype>table-cell</bxe:tabletype>
+							<bxe:defaultcontent>#</bxe:defaultcontent>
+							<!--<bxe:onnew type="function">bxe_table_InsertCellOnNew</bxe:onnew>-->
+							
+							<ref name="_table_cell_alignment"/>
+							<ref name="_color"/>
+							
+							<attribute name="colspan">
+								<bxe:defaultcontent>1</bxe:defaultcontent>
+								<data type="int"/>
+							</attribute>
+							<attribute name="rowspan">
+								<bxe:defaultcontent>1</bxe:defaultcontent>
+								<data type="int"/>
+							</attribute>
+							
+							<ref name="_text_type"/>
+							
+						</element>
+					</oneOrMore>
+				 </element>
+			 </oneOrMore>
+
+	</define>
+
+	<define name="_table_cell_alignment">
+		<attribute name="align">
+			<bxe:defaultcontent>left</bxe:defaultcontent>
+			<choice>
+				  <value type="string">left</value>
+				  <value type="string">center</value>
+				  <value type="string">right</value>
+			</choice>										
+		</attribute>
+		<attribute name="valign">
+			<bxe:defaultcontent>top</bxe:defaultcontent>
+			<choice>
+				  <value type="string">top</value>
+				  <value type="string">middle</value>
+				  <value type="string">bottom</value>
+			</choice>										
+		</attribute>
+	</define>
+
+	<define name="_color">
+		<attribute name="color">
+			<bxe:defaultcontent>automatic</bxe:defaultcontent>
+			<choice>
+				<value type="string">automatic</value>
+				<value type="string">gray</value>
+				<value type="string">darkgray</value>
+				<value type="string">color40</value>
+				<value type="string">color20</value>
+				<value type="string">transparent</value>
+			</choice>										
+		</attribute>
+	</define>
+	
 	<define name="_table">
 		<element name="table">
 			<bxe:name>Table</bxe:name>
-		
+			<bxe:onnew type="function">bxe_table_InsertTableOnNew</bxe:onnew>
 			<oneOrMore>
 				<element name="tr">
 					<bxe:name>Table Row</bxe:name>
+					<bxe:onnew type="function">bxe_table_InsertRowOnNew</bxe:onnew>
 					<oneOrMore>
 						<element name="td">
 							<bxe:name>Table Data</bxe:name>
-							<optional><attribute name="align">
+							<bxe:onnew type="function">bxe_table_InsertCellOnNew</bxe:onnew>
+							<attribute name="align">
+								<bxe:defaultcontent>left</bxe:defaultcontent>
 								<choice>
 								      <value type="string">left</value>
 								      <value type="string">center</value>
@@ -280,6 +1112,7 @@
 								</choice>										
 							</attribute>
 							<attribute name="valign">
+								<bxe:defaultcontent>top</bxe:defaultcontent>
 								<choice>
 								      <value type="string">top</value>
 								      <value type="string">middle</value>
@@ -287,19 +1120,16 @@
 								</choice>										
 							</attribute>
 							<attribute name="colspan">
+								<bxe:defaultcontent>1</bxe:defaultcontent>
 								<data type="int"/>
 							</attribute>
 							<attribute name="rowspan">
+								<bxe:defaultcontent>1</bxe:defaultcontent>
 								<data type="int"/>
 							</attribute>
-                            </optional>
-							<oneOrMore>
-								<choice>
-									<ref name="_text_type"/>
-									<ref name="_span_type"/>
-									<ref name="_div_type"/>
-								</choice>
-							</oneOrMore>
+
+							<ref name="_text_type"/>
+							
 						</element>
 					</oneOrMore>
 				</element>
@@ -307,401 +1137,459 @@
 		</element>
 	</define>
 	
+	<define name="_media_standard">
+		<attribute name="x-size">
+			<bxe:defaultcontent>20</bxe:defaultcontent> <!-- 0 means the orig size -->
+			<data type="int">
+				<param name="minInclusive">0</param>
+				<param name="maxInclusive">160</param>
+			</data>
+		</attribute>
+		<attribute name="y-size">
+			<bxe:defaultcontent>20</bxe:defaultcontent> <!-- 0 means the orig size -->
+			<data type="int">
+				<param name="minInclusive">0</param>
+				<param name="maxInclusive">160</param>
+			</data>
+		</attribute>
+		<attribute name="xy-size">
+				<bxe:defaultcontent>200</bxe:defaultcontent> <!-- 0 means the orig size -->
+				<data type="int">
+					<param name="minInclusive">0</param>
+					<param name="maxInclusive">160</param>
+				</data>
+		</attribute>
+		<attribute name="format">
+			<bxe:defaultcontent>original</bxe:defaultcontent>
+			<choice>
+				  <value type="string">original</value>
+				  <value type="string">gif</value>
+				  <value type="string">png</value>
+				  <value type="string">jpg</value>
+			</choice>										
+		</attribute>
+		<attribute name="align">
+			<bxe:defaultcontent>none</bxe:defaultcontent>
+			<choice>
+				  <value type="string">none</value>
+				  <value type="string">left</value>
+				  <value type="string">center</value>
+				  <value type="string">right</value>
+			</choice>										
+		</attribute>
+		<attribute name="floating">
+			<bxe:defaultcontent>none</bxe:defaultcontent>
+			<choice>
+				  <value type="string">none</value>
+				  <value type="string">left</value>
+				  <value type="string">right</value>
+			</choice>										
+		</attribute>
+	</define>
+	
 	<define name="_media">
 		<element name="media">
 		
-		<bxe:name>Media</bxe:name>
+			<bxe:name>Media</bxe:name>
+			<bxe:helptext>An image, must be choosen and linked via object browser.</bxe:helptext>
+			<bxe:onnew type="popup">object_browser.html4?client=bxe&amp;callback_function=init_media_url</bxe:onnew>
+		
 			<attribute name="url">
-				<bxe:defaultcontent>/testimage</bxe:defaultcontent>   
+				<bxe:defaultcontent>/_rsc/gfx</bxe:defaultcontent>
+				<bxe:selector type="popup">object_browser.html4?client=bxe&amp;callback_function=set_media_url</bxe:selector>
 				<text/>
 			</attribute>
+			
+			<ref name="_media_standard"/>
+			<optional>
+				<ref name="_caption"/>
+			</optional>
+			
+		</element>
+	</define>
+	
+	<define name="_color_scheme">
+		<element name="color_scheme">
+		
+			<bxe:name>Color Scheme</bxe:name>
+			<bxe:helptext>A color scheme</bxe:helptext>
+			
+			<attribute name="color_code">
+				<bxe:defaultcontent>K100</bxe:defaultcontent>
+				<choice>
+					  <value type="string">K100</value>
+					  <value type="string">K100+K100</value>
+					  <value type="string">C100</value>
+					  <value type="string">M100</value>
+					  <value type="string">Y100</value>
+					  <value type="string">R100</value>
+					  <value type="string">G100</value>
+					  <value type="string">B100</value>
+					  <value type="string">OR100</value>
+					  <value type="string">K50</value>
+					  <value type="string">GR50</value>
+					  <value type="string">C50</value>
+					  <value type="string">M50</value>
+					  <value type="string">Y50</value>
+					  <value type="string">C100,M100,Y100</value>
+					  <value type="string">C100,M100,Y100+C100,M100,Y100</value>
+					  <value type="string">C50,M50,Y100</value>
+					  <value type="string">C50,C50,K100</value>
+					  <value type="string">C50,M50,K100</value>
+					  <value type="string">C50,C75,C100</value>
+					  <value type="string">GR25,GR50,GR100</value>
+					  <value type="string">K100,C100,M100,Y100</value>
+					  <value type="string">K100,C100,M100,Y100+K100,C100,M100,Y100</value>
+					  <value type="string">C100,M100,Y100,C50,M50</value>
+					  <value type="string">K100,C100,M100,Y100,C50,M50</value>
+					  <value type="string">3xK</value>
+					  <value type="string">3xC</value>
+					  <value type="string">3xM</value>
+					  <value type="string">3xY</value>
+					  <value type="string">K100,C100</value>
+					  <value type="string">M100,Y100</value>
+					  <value type="string">M100,C100</value>
+					  <value type="string">Y100,K100</value>
+					  <value type="string">K100 + C100,M100,Y100</value>
+					  <value type="string">C100 + M100 + Y100</value>
+					  <value type="string">T1x</value>
+					  <value type="string">T2x</value>
+					  <value type="string">T3x</value>
+					  <value type="string">T4x</value>
+					  <value type="string">T5x</value>
+					  <value type="string">T6x</value>
+				</choice>										
+			</attribute>
+			
+		</element>
+	</define>
+	
+	<define name="_product_images">
+		<element name="product_images">
+		<bxe:name>Product Images</bxe:name>
+		<bxe:helptext>Horizontal or vertical combination of product images.</bxe:helptext>
+		
+			<attribute name="layout">
+				<bxe:defaultcontent>horizontal</bxe:defaultcontent>
+				<choice>
+					  <value type="string">horizontal</value>
+					  <value type="string">vertical</value>
+				</choice>										
+			</attribute>
+			<attribute name="align">
+				<bxe:defaultcontent>center</bxe:defaultcontent>
+				<choice>
+					  <value type="string">left</value>
+					  <value type="string">center</value>
+					  <value type="string">right</value>
+					  <value type="string">inside</value>
+					  <value type="string">outside</value>
+				</choice>										
+			</attribute>
+			<attribute name="valign">
+				<bxe:defaultcontent>middle</bxe:defaultcontent>
+				<choice>
+					  <value type="string">top</value>
+					  <value type="string">middle</value>
+					  <value type="string">bottom</value>
+				</choice>										
+			</attribute>
+			<attribute name="width">
+				<bxe:defaultcontent>100%</bxe:defaultcontent>
+				<choice>
+					  <value type="string">25%</value>
+					  <value type="string">50%</value>
+					  <value type="string">100%</value>
+				</choice>										
+			</attribute>
+			<oneOrMore>
+				<choice>
+					<ref name="_product_image"/>
+					<ref name="_media"/>
+					<ref name="_logo"/>
+					<ref name="_multilingual_image"/>
+					<ref name="_spacer"/>
+					<ref name="_infolabel"/>
+					<ref name="_caption"/>
+				</choice>
+			</oneOrMore>
+		</element>
+	</define>
+	
+	<define name="_product_image">
+		<element name="product_image">
+			<!-- <bxe:onnew type="function">cope2_product_image_startingContextMenu</bxe:onnew> -->
+			<bxe:name>Product Image</bxe:name>
+			<bxe:helptext>Choosen and linked via object ID or product id.</bxe:helptext>
+			<bxe:onempty type="function">onempty_image_tag</bxe:onempty>
+			<attribute name="object_id">
+                <bxe:defaultcontent>0</bxe:defaultcontent>
+                <text/>
+            </attribute>
+			<attribute name="product_id">
+				<bxe:defaultcontent>0</bxe:defaultcontent>
+				<text/>
+			</attribute>
+			<attribute name="sequence_number">
+				<bxe:defaultcontent>1</bxe:defaultcontent>
+				<choice>
+					<value type="string">1</value>
+					<value type="string">2</value>
+					<value type="string">3</value>
+					<value type="string">4</value>
+					<value type="string">5</value>
+					<value type="string">6</value>
+					<value type="string">7</value>
+					<value type="string">8</value>
+					<value type="string">9</value>
+					<value type="string">10</value>
+					<value type="string">11</value>
+					<value type="string">12</value>
+					<value type="string">13</value>
+					<value type="string">14</value>
+					<value type="string">15</value>
+					<value type="string">16</value>
+					<value type="string">17</value>
+					<value type="string">18</value>
+					<value type="string">19</value>
+					<value type="string">20</value>
+				</choice>										
+			</attribute>
+				
+			<attribute name="x-size">
+				<bxe:defaultcontent>37</bxe:defaultcontent>
+				<data type="int">
+					<param name="minInclusive">0</param>
+					<param name="maxInclusive">160</param>
+				</data>
+			</attribute>
+			<attribute name="y-size">
+				<bxe:defaultcontent>37</bxe:defaultcontent>
+				<data type="int">
+					<param name="minInclusive">0</param>
+					<param name="maxInclusive">160</param>
+				</data>
+			</attribute>
+			<attribute name="xy-size">
+					<bxe:defaultcontent>0</bxe:defaultcontent>
+					<data type="int">
+						<param name="minInclusive">0</param>
+						<param name="maxInclusive">160</param>
+					</data>
+			</attribute>
+			<attribute name="align">
+				<bxe:defaultcontent>none</bxe:defaultcontent>
+				<choice>
+					  <value type="string">none</value>
+					  <value type="string">left</value>
+					  <value type="string">center</value>
+					  <value type="string">right</value>
+				</choice>										
+			</attribute>
+			<attribute name="floating">
+				<bxe:defaultcontent>none</bxe:defaultcontent>
+				<choice>
+					  <value type="string">none</value>
+					  <value type="string">left</value>
+					  <value type="string">right</value>
+				</choice>										
+			</attribute>
+			<optional>
+      			<ref name="_caption"/>
+      		</optional>
+	    	
+		</element>
+	</define>
+
+	<define name="_caption">
+		<element name="caption">
+			<bxe:name>Caption</bxe:name>
+			<bxe:defaultcontent>New Caption...</bxe:defaultcontent>
+			<bxe:onempty type="delete"/>
+			<ref name="_text_type"/>
+					
+		</element>
+	</define>
+
+	<define name="_logo">
+		<element name="logo">
+		<bxe:name>Logo</bxe:name>
+		
+			<attribute name="manufacturer_id">
+				<bxe:defaultcontent>0</bxe:defaultcontent>
+				<text/>
+			</attribute>
+			<!--
+			<attribute name="manufacturer_name">
+				<bxe:defaultcontent>#</bxe:defaultcontent>
+				<text/>
+			</attribute>
+			-->
 			<attribute name="x-size">
 				<bxe:defaultcontent>0</bxe:defaultcontent>
 				<data type="int">
-					<param name="minInclusive">0</param> <!-- 0 means the orig size -->
-    				<param name="maxInclusive">1200</param>
-    			</data>
+					<param name="minInclusive">0</param>
+					<param name="maxInclusive">160</param>
+				</data>
 			</attribute>
 			<attribute name="y-size">
 				<bxe:defaultcontent>0</bxe:defaultcontent>
 				<data type="int">
-					<param name="minInclusive">0</param> <!-- 0 means the orig size -->
-    				<param name="maxInclusive">1200</param>
-    			</data>
+					<param name="minInclusive">0</param>
+					<param name="maxInclusive">160</param>
+				</data>
 			</attribute>
+			<attribute name="xy-size">
+				<bxe:defaultcontent>280</bxe:defaultcontent>
+				<data type="int">
+					<param name="minInclusive">0</param>
+					<param name="maxInclusive">160</param>
+				</data>
+			</attribute>
+			<!--
 			<attribute name="format">
 				<bxe:defaultcontent>original</bxe:defaultcontent>
 				<choice>
-				      <value type="string">original</value>
-				      <value type="string">gif</value>
-				      <value type="string">png</value>
-				      <value type="string">jpg</value>
+					  <value type="string">original</value>
+					  <value type="string">gif</value>
+					  <value type="string">png</value>
+					  <value type="string">jpg</value>
 				</choice>										
 			</attribute>
-			
-			<attribute name="caption">
-				<bxe:defaultcontent>Caption...</bxe:defaultcontent>
-				<text/>
+			-->
+			<attribute name="floating">
+				<bxe:defaultcontent>none</bxe:defaultcontent>
+				<choice>
+					  <value type="string">none</value>
+					  <value type="string">left</value>
+					  <value type="string">right</value>
+				</choice>										
 			</attribute>
 		</element>
 	</define>
-	
-	<define name="_news">
-		<element name="news">
-			<bxe:name>A News</bxe:name>
-			<ref name="_coid"/>
-			
-			<element name="title">
-				<bxe:name>News Title</bxe:name>
-				<text/>
-			</element>
-			<element name="timestamp">
-				<bxe:name>Timestamp</bxe:name>
-				<element name="year">
-					<bxe:name>Year</bxe:name>
-					<bxe:defaultcontent type="function">cope2_getYear</bxe:defaultcontent>
-			
-					<data type="int">
-						<param name="minInclusive">2005</param>
-	    				<param name="maxInclusive">2015</param> <!-- 2016.01.01: cope2 will suicide. juhu >:) -->
-	    			</data>
-				</element>
-				<element name="month">
-					<bxe:name>Month</bxe:name>
-					<bxe:defaultcontent type="function">cope2_getMonth</bxe:defaultcontent>
-			
-					<data type="int">
-						<param name="minInclusive">1</param>
-	    				<param name="maxInclusive">12</param>
-	    			</data>
-				</element>
-				<element name="day">
-					<bxe:name>Day</bxe:name>
-					<bxe:defaultcontent type="function">cope2_getDay</bxe:defaultcontent>
-					<data type="int">
-						<param name="minInclusive">1</param>
-	    				<param name="maxInclusive">31</param>
-	    			</data>
-				</element>
-				<element name="hour">
-					<bxe:name>Hour</bxe:name>
-                    <bxe:defaultcontent type="function">cope2_getHour</bxe:defaultcontent>
+
+
+    <define name="_multilingual_image">
+        <element name="multilingual_image">
+            <bxe:name>Multilingual Image</bxe:name>
+            <bxe:helptext>Choosen and linked via unique name.</bxe:helptext>
+            <bxe:onempty type="function">onempty_image_tag</bxe:onempty>
+            <attribute name="objectid">
+                <bxe:defaultcontent>0</bxe:defaultcontent>
+                <text/>
+            </attribute>
+            <attribute name="name">
+                <bxe:defaultcontent>...</bxe:defaultcontent>
+                <text/>
+            </attribute>
+                
+            <attribute name="x-size">
+                <bxe:defaultcontent>37</bxe:defaultcontent>
+                <data type="int">
+                    <param name="minInclusive">0</param>
+                    <param name="maxInclusive">160</param>
+                </data>
+            </attribute>
+            <attribute name="y-size">
+                <bxe:defaultcontent>37</bxe:defaultcontent>
+                <data type="int">
+                    <param name="minInclusive">0</param>
+                    <param name="maxInclusive">160</param>
+                </data>
+            </attribute>
+            <attribute name="xy-size">
+                    <bxe:defaultcontent>0</bxe:defaultcontent>
                     <data type="int">
-						<param name="minInclusive">0</param>
-	    				<param name="maxInclusive">23</param>
-	    			</data>
-				</element>
-				<element name="minute">
-					<bxe:name>Minute</bxe:name>
-					<bxe:defaultcontent type="function">cope2_getMinute</bxe:defaultcontent>
-                    <data type="int">
-						<param name="minInclusive">0</param>
-	    				<param name="maxInclusive">59</param>
-	    			</data>
-				</element>
-			</element>
-			<element name="source">
-				<bxe:name>Source</bxe:name>
-				<text/>
-			</element>
-			<element name="content">
-				<bxe:name>Content</bxe:name>
-				<bxe:defaultcontent>News content...</bxe:defaultcontent>
-				
-				<oneOrMore>
-					<choice>
-						<ref name="_text_type"/>
-						<ref name="_span_type"/>
-						<ref name="_div_type"/>
-					</choice>
-				</oneOrMore>
-			</element>
-			<element name="author">
-				<bxe:name>Author</bxe:name>
-				<bxe:defaultcontent>News Author...</bxe:defaultcontent>
-				<text/>
-			</element>
-			<element name="contact">
-				<bxe:name>Contact</bxe:name>
-				<ref name="_email"/>
-			</element>
-		</element>
-	</define>
-	
-	<define name="_person">
-		<element name="person">
-			<bxe:name>Person</bxe:name>
-			<ref name="_coid"/>
-		
-			<optional>
-				<element name="location">
-					<bxe:name>Location</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<optional>
-				<element name="gender">
-					<bxe:name>Gender</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<optional>
-				<element name="title">
-					<bxe:name>Title</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<element name="firstname">
-				<bxe:name>First Name</bxe:name>
-				<text/>
-			</element>
-			<element name="lastname">
-				<bxe:name>Last Name</bxe:name>
-				<text/>
-			</element>
-			<optional>
-				<element name="fon">
-					<bxe:name>Fon Number</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<optional>
-				<element name="fax">
-					<bxe:name>Fax Number</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<ref name="_email"/>
-			<optional>
-				<ref name="_address"/>
-			</optional>
-      
-		</element>
-	</define>
-	
-	<define name="_address">
-		<element name="address">
-			<bxe:name>Address (Postal)</bxe:name>
-			<ref name="_coid"/>
-			<interleave>
-			<element name="name">
-				<bxe:name>Name</bxe:name>
-				<text/>
-			</element>
-			<optional>
-				<element name="postoffice">
-					<bxe:name>Postoffice (PO Box)</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<element name="street">
-				<bxe:name>Street Name</bxe:name>
-				<text/>
-			</element>
-			<element name="number">
-				<bxe:name>Street Number</bxe:name>
-				<text/>
-			</element>
-			<element name="zipcode">
-				<bxe:name>Zipcode (PLZ)</bxe:name>
-				<text/>
-			</element>
-			<element name="city">
-				<bxe:name>City Name</bxe:name>
-				<text/>
-			</element>
-			<optional>
-				<element name="state">
-					<bxe:name>State of Country</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<element name="country">
-				<bxe:name>Country Name</bxe:name>
-				<text/>
-			</element>
-			<optional>
-				<element name="fon">
-					<bxe:name>Fon Number</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<optional>
-				<element name="fax">
-					<bxe:name>Fax Number</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<optional>
-				<ref name="_email"/>
-			</optional>
-			<optional>
-				<ref name="_roadmap"/>
-			</optional>
-            </interleave>
-		</element>
-	</define>
+                        <param name="minInclusive">0</param>
+                        <param name="maxInclusive">160</param>
+                    </data>
+            </attribute>
+            <attribute name="align">
+                <bxe:defaultcontent>none</bxe:defaultcontent>
+                <choice>
+                      <value type="string">none</value>
+                      <value type="string">left</value>
+                      <value type="string">center</value>
+                      <value type="string">right</value>
+                </choice>                                       
+            </attribute>
+            <attribute name="floating">
+                <bxe:defaultcontent>none</bxe:defaultcontent>
+                <choice>
+                      <value type="string">none</value>
+                      <value type="string">left</value>
+                      <value type="string">right</value>
+                </choice>                                       
+            </attribute>
+            
+            <optional>
+                <ref name="_caption"/>
+            </optional>
 
+        </element>
+    </define>
+    
 
-	<define name="_roadmap">
-		<element name="roadmap">
-			<bxe:name>Roadmap</bxe:name>
-			<ref name="_coid"/>
-			
-			<ref name="_media"/>
-			<zeroOrMore>
-				<ref name="_div_type"/>
-			</zeroOrMore>
-		</element>
-	</define>
-
-	<define name="_systemhouse">
-		<element name="systemhouse">
-			<bxe:name>Bechtle Systemhouse</bxe:name>
-			<ref name="_coid"/>
-			
-			<element name="company">
-				<bxe:name>Company</bxe:name>
-				<text/>
-			</element>
-			<oneOrMore>
-				<element name="ceo">
-					<bxe:name>CEO Person</bxe:name>
-					<ref name="_media"/>
-					<element name="firstname">
-						<bxe:name>First Name</bxe:name>
-						<text/>
-					</element>
-					<element name="lastname">
-						<bxe:name>Last Name</bxe:name>
-						<text/>
-					</element>
-					<ref name="_email"/>
-				</element>
-			</oneOrMore>
-			<element name="image">
-				<bxe:name>Building image</bxe:name>
-				<ref name="_media"/>
-			</element>
-			<ref name="_address"/>
-		</element>
-	</define>
-
-	<define name="_competencecenter">
-		<element name="competencecenter">
-			<bxe:name>Bechtle CompetenceCenter</bxe:name>
-			<ref name="_coid"/>
-
-			<element name="title">
-				<bxe:name>Company Title</bxe:name>
-				<text/>
-			</element>
-			<element name="name">
-				<bxe:name>Competence Name</bxe:name>
-				<text/>
-			</element>
-			<element name="concept">
-				<bxe:name>Concept</bxe:name>
-				<text/>
-			</element>
-			<element name="portfolio">
-				<bxe:name>Competence Portfolio</bxe:name>
-				<ref name="_itemizedlist"/>
-			</element>
-			<element name="team">
-				<bxe:name>Team</bxe:name>
-				<text/>
-			</element>
-			<element name="customers">
-				<bxe:name>Customers</bxe:name>
-				<text/>
-			</element>
-			<optional>
-				<element name="partner">
-					<bxe:name>Partner</bxe:name>
-					<text/>
-				</element>
-			</optional>
-			<element name="data">
-				<bxe:name>Data</bxe:name>
-				<text/>
-			</element>
-			<element name="contact">
-				<bxe:name>Contact List</bxe:name>
-				<oneOrMore>
-					<ref name="_person"/>
-				</oneOrMore>
-			</element>
-
-		</element>
-	</define>
-	
-	<!-- span type definitions -->
-	
-	<define name="_span_type">
-		<choice>
-			<ref name="_nowrap"/>
-			<ref name="_emphasize"/>
-			<ref name="_bold"/>
-			<ref name="_subscript"/>
-			<ref name="_superscript"/>
-			<ref name="_ankerlink"/>
-			<ref name="_ilink"/>
-			<ref name="_elink"/>
-			<ref name="_email"/>
-			<ref name="_download"/>
-			<ref name="_docnote"/>
-			<ref name="_system"/>
-		</choice>
-	</define>
-	
-	<define name="_text_type">
-		<oneOrMore>
-			<choice>
-				<text/>
-				<ref name="_span_type"/>
-			</choice>
-		</oneOrMore>
-	</define>
-	
 	<define name="_spacer">
 		<element name="spacer">
 			<bxe:name>Spacer</bxe:name>
+			<bxe:nextelement>para</bxe:nextelement>
+			<bxe:helptext>with 3 display mode (as attribute): inline, line, visibleline.</bxe:helptext>
+			<attribute name="x-size">
+				<bxe:defaultcontent>4</bxe:defaultcontent>
+				<data type="int">
+					<param name="minInclusive">2</param>
+    				<param name="maxInclusive">160</param>
+    			</data>
+			</attribute>
+			<attribute name="y-size">
+				<bxe:defaultcontent>4</bxe:defaultcontent>
+				<data type="int">
+					<param name="minInclusive">2</param>
+    				<param name="maxInclusive">160</param>
+    			</data>
+			</attribute>
+			
 			<attribute name="display">
+				<bxe:defaultcontent>inline</bxe:defaultcontent>
 				<choice>
-				      <value type="string">#display</value> <!-- deprecated -->
-				      <value type="string">span</value>
+				      <value type="string">inline</value>
 				      <value type="string">line</value>
+				      <value type="string">visibleline</value>
 				</choice>										
 			</attribute>
-			<text/>
+			
 		</element>
 	</define>
 	
 	<define name="_nowrap">
 		<element name="nowrap">
 			<bxe:name>No Wrap</bxe:name>
-			<text/>
+			<bxe:onempty type="delete"/>
+			<ref name="_text_type"/>
 		</element>
 	</define>
 	
 	<define name="_emphasize">
 		<element name="emphasize">
 			<bxe:name>Emphasize</bxe:name>
-			<text/>
+			<bxe:onempty type="delete"/>
+			<ref name="_text_type"/>
 		</element>
 	</define>
 	
 	<define name="_bold">
 		<element name="bold">
 			<bxe:name>Bold</bxe:name>
-			<text/>
+			<bxe:onempty type="delete"/>
+			<ref name="_text_type"/>
 		</element>
 	</define>
 	
 	<define name="_subscript">
 		<element name="subscript">
 			<bxe:name>Subscript</bxe:name>
+			<bxe:onempty type="delete"/>
 			<text/>
 		</element>
 	</define>
@@ -709,30 +1597,7 @@
 	<define name="_superscript">
 		<element name="superscript">
 			<bxe:name>Superscript</bxe:name>
-			<text/>
-		</element>
-	</define>
-	
-	<define name="_anker">
-		<element name="anker">
-			<bxe:name>Anker Destination</bxe:name>
-			<ref name="_coid"/>
-			
-			<attribute name="name">
-				<text/>
-			</attribute>
-			<text/>
-		</element>
-	</define>
-
-	<define name="_ankerlink">
-		<element name="ankerlink">
-			<bxe:name>Anker Link</bxe:name>
-			<ref name="_coid"/>
-			
-			<attribute name="url">
-				<text/>
-			</attribute>
+			<bxe:onempty type="delete"/>
 			<text/>
 		</element>
 	</define>
@@ -740,65 +1605,33 @@
 	<define name="_download">
 		<element name="download">
 			<bxe:name>Download Link</bxe:name>
-			<ref name="_coid"/>
 			
 			<attribute name="url">
 				<text/>
 			</attribute>
 			<choice>
-				<text/>
+				<ref name="_text_type"/>
 				<ref name="_media"/>
 			</choice>
 		</element>
 	</define>
 	
-	<define name="_ilink">
-		<element name="ilink">
-			<bxe:name>Internal Link</bxe:name>
-            <bxe:onnew type="popup">./link.html</bxe:onnew>
-			<attribute name="url">
-            <bxe:defaultcontent>#link</bxe:defaultcontent>
-				<text/>
-			</attribute>
-			<choice>
-				<text/>
-				<ref name="_media"/>
-			</choice>
+	<define name="_linebreak">
+		<element name="linebreak">
+			<bxe:name>Line Break</bxe:name>
 		</element>
 	</define>
 	
-	<define name="_elink">
-		<element name="elink">
-			<bxe:name>External Link</bxe:name>
-			<attribute name="url">
-				<text/>
-			</attribute>
-			<choice>
-				<text/>
-				<ref name="_media"/>
-			</choice>
-		</element>
-	</define>
-	
-	<define name="_email">
-		<element name="email">
-			<bxe:name>Email Link</bxe:name>
-			<attribute name="address">
-				<text/>
-                <bxe:defaultcontent>herr.meier@bechtle.com</bxe:defaultcontent>
-                <bxe:selector type="function">emailselector</bxe:selector>    
-			</attribute>
-			<choice>
-				<text/>
-			</choice>
-		</element>
-	</define>
+	<define name="_linebreak_soft">
+        <element name="linebreak_soft">
+            <bxe:name>Line Break (soft)</bxe:name>
+        </element>
+    </define>	
 	
 	<define name="_docnote">
 		<element name="docnote">
 			<bxe:name>Document Note</bxe:name>
-			<ref name="_coid"/>
-			
+			<bxe:onempty type="delete"/>
 			<text/>
 		</element>
 	</define>
@@ -806,8 +1639,8 @@
 	<define name="_system">
 		<element name="system">
 			<bxe:name>System (internal!)</bxe:name>
-			<ref name="_coid"/>
 			<attribute name="name">
+				<bxe:defaultcontent>None</bxe:defaultcontent>
 				<text/>
 			</attribute>
 		</element>

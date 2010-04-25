@@ -145,11 +145,15 @@
           
     -->
     
-        <button name="bold" col="1" row="1" action="ToggleTextClass" />
+        
+		 <button name="bold" col="1" row="1" action="ToggleTextClass" />
         <button name="emphasize" col="0" row="1" action="ToggleTextClass" />
-
-        <button name="sub" col="4" row="1" action="ToggleTextClass" />
-        <button name="sup" col="5" row="1" action="ToggleTextClass" />
+        <button name="subscript" col="4" row="1" action="ToggleTextClass"/>
+        <button name="superscript" col="5" row="1" action="ToggleTextClass"/>
+        <button name="Specialchars" col="4" row="3" action="InsertSpecialchars"/>
+        <button name="Redraw" col="5" row="6" type="function">bxe_Transform</button>
+        
+		
         <button name="clean_inline" col="0" row="6" action="CleanInline"/>
         <button name="link" col="0" row="5" action="InsertLink"/>
         <button name="unlink" col="1" row="5" action="DeleteLink"/>

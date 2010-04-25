@@ -1,93 +1,26 @@
-<?xml version='1.0' encoding='Utf-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document>
-	<header>
-		<shorttitle>Testseite Liip AG.</shorttitle>
-		<subs>
-			<ilink url='/blog'></ilink>
-		</subs>
-		<keywords></keywords>
-		<specials/>
-		
-	</header>
-	<content>
-		<title>Willkommen auf der BXE Testseite der Liip AG</title>
-		<abstract>Das ist eine Testseite</abstract>
-		<page coid='id0x043ea0e0'>
-			<article coid='id0x03929d18'>
-				<collection coid='id0x04578a28' layout='row'>
-					<block coid='id0x024eea28' align='left'>
-						<spacer display='line'> </spacer>
-						<systemhousenavigator/>
-						<spacer display='line'> </spacer>
-						<paraheadline coid='id0x0435f0f0'>Im Mittelpunkt unserer Arbeit stehen Sie, unser Kunde.</paraheadline>
-						<news coid='id0x030537b0'>
-							<title>Liip AG: Agile Web Development</title>
-							<timestamp>
-								<year>2008</year>
-								<month>01</month>
-								<day>21</day>
-								<hour>09</hour>
-								<minute>00</minute>
-							</timestamp>
-							<source>Liip AG</source>
-							<content>
-								<para>BXE - The Wysiwyg XML Editor </para>
-							</content>
-							<author>Liip AG</author>
-							<contact>
-								<email address='#address'>chregu@liip.com</email>
-							</contact>
-						</news>
-					</block>
-				</collection>
-				<collection coid='id0x027a19a8' layout='col'>
-					<block coid='id0x01ea3b58' align='left'>
-						<paraheadline coid='id0x01d17b30'>Die aktuellen Liip-Meldungen:</paraheadline>
-<competencecenter coid='id0x037c8230'>
-	<title>Herzlich Willkommen im Bereich</title>
-	<name>Agile Web Development</name>
-	<concept>Wir sind der Spezialist für die Mechanische Konstruktion mit Autodesk Mechanik Produkten und dem EDM System Compass.</concept>
-	<portfolio>
-		<itemizedlist>
-			<bxlistitem>Einmal eingeben, mehrmals ausgeben: Flux CMS</bxlistitem>
-			<bxlistitem>Editieren von Inhalten leicht gemacht: BXE WYSIWYG Editor</bxlistitem>
-			<bxlistitem>Von den XML und PHP Experten: Liip ist aktiv in der Entwicklung der Programmiersprache PHP involviert.</bxlistitem>
-		</itemizedlist>
-	</portfolio>
-	<team>31 Mitarbeiter in Freiburg, Bern und Zürich</team>
-	<customers>Kunden die uns vertrauen sind unsere Referenzen.</customers>
-	<data>local.ch, Zürich,
-			Schweizerische Nationalbank, Bern / Zürich, 
-			Cablecom GmbH, Zürich, 
-			Radio DRS, Bern,
-			Schweizer Fernsehen (SF), Zürich, 
-			Raiffeisen, St. Gallen, 
-			Schweizerische Eidgenossenschaft, Bern </data>
-	<contact>
-		<person coid='id0x444c8230'>
-			<location>Zürich</location>
-			<firstname>Chregu</firstname>
-			<lastname>Stocker</lastname>
-			<fon>+41 44 240 56 70</fon>
-			<email address='chregu@liip.com'>chregu@liip.com</email>
-		</person>
-	    <person coid='id0x444c8230'>
-			<location>Freiburg</location>
-			<firstname>Gerhard</firstname>
-			<lastname>Andrey</lastname>
-			<fon>+41 26 422 25 11</fon>
-			<email address='gerhard.andrey@liip.com'>gerhard.andrey@liip.com</email>
-		</person>
-	</contact>
-</competencecenter>
-						<news_preview_navigator/>
-						<xform type='contact_standard' recipient='info@Liip.com'/>
-						<xform type='ir_mailservice' recipient='info@Liip.com'/>
-						<xform type='press_mailservice' recipient='info@Liip.com'/>
-						<competencecenternavigator/>
-					</block>
-				</collection>
-			</article>
-		</page>
+	<header layout="4-rows" orientation="left" media="all" module="PE" catalog="main" show_grid="yes" show_table_headers="yes" color_schema="auto" show_de_control_layer="no" infopage="no">
+		<shorttitle>New Catalog Page Document</shorttitle>
+		<keywords>...</keywords>
+		<docnotes>This is a new 'Catalog Page' document. Please edit it!</docnotes>
+	<data>
+      <page_referers/>
+      <product_ids/>
+      <price_product_ids/>
+      <manufacturer_ids/>
+    </data>
+  </header>
+	<content x-size="800">
+		<title>This is a new Catalog Page Title. Please edit it!</title>
+		<horizontal_box horizontal_delimiter="no" layout="left-to-right" vertical_delimiter="yes">
+			<block _y="196.6" _x="47.6" _w="10" colspan="1" align="left" valign="top" _h="4">
+				<blocktitle>
+          <maintitle _w="148.6" _x="29.8" _y="39.8" _h="6">Best of Engadget</maintitle>
+          <subtitle _w="13" _x="73" _y="196.6" _h="4">Das iPhone fällt nicht weit vom Ast</subtitle>
+        </blocktitle>
+        <para _w="148.6" _x="29.8" _y="52.6" _h="38">Das ökologisch korrekte iPhone-Dock baut man aus Holz, ist doch klar. Inklusive individuellem Echt-Ast. Außerdem im Best-of-Engadget: Ein grün angehauchter Kabinenroller der Neuzeit und viele, viele Kameras.  Wie lädt der ökologisch total korrekte iPhone-Anwender sein Lieblings-Handy auf? So naturnah wie möglich, ist doch klar. Am besten im Wald, zwischen Rehkitzen und Frischlingen. Und wenn möglich nur mit Liebe und frischer Landluft. Aber dafür ist die Technik noch nicht bereit, auch wenn es schon reichlich grüne Gadgets gibt. Etwa Nokias neue Netzteile, die Bescheid sagen, wenn der Akku voll ist, man den Stecker ziehen sollte.  Für Menschen die es toll finden, grün und hyperindividuell zu konsumieren, stellt die US-Firma Audiowood Produkte her: Zum Beispiel das "bezaubernde iPhone-Dock aus Holz", das auf einer 6-Zoll-Baumscheibe basiert und als Highlight einen individuellen Ast mitbringt. Da freut sich der USB-Port, für 72,34 Euro.  Best of Engadget bei SPIEGEL ONLINE: Wir präsentieren eine wöchentliche Auswahl von coolen neuen Gadgets und Kuriositäten aus dem bekannten Tech-Blog. Heute im Angebot: </para>
+			</block>
+		</horizontal_box>
 	</content>
 </document>
