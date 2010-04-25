@@ -22,7 +22,7 @@ var BXE_VERSION = "2.0-dev";
 var BXE_BUILD = "200809120300"
 var BXE_REVISION = "$Rev$".replace(/\$Rev: ([0-9]+) \$/,"r$1");
 var bxe_loadMin = false;
-var bxe_notSupportedText = "BXE only works with Mozilla >= 1.4 / Firefox on any platform. \nCurrently we recommend Mozilla 1.6 or Firefox 1.0.";
+var bxe_notSupportedText = "BXE only works with Firefox >= 2.0 on any platform. \nCurrently we recommend  Firefox 3.6.";
 
 if (window.location.protocol == "file:" || window.location.host.match(/localhost.*/)) {
 	var DebugOutput = false;
@@ -180,8 +180,7 @@ function bxe_bug290777_check() {
 function bxe_checkSupportedBrowsers() {
 	var mozillaRvVersion = navigator.userAgent.match(/rv:([[0-9a-z\.]*)/)[1];
 	var mozillaRvVersionInt = parseFloat(mozillaRvVersion);
-
-	if (mozillaRvVersionInt >= 1.4) {
+	if (mozillaRvVersionInt >= 1.8) {
 		if (bxe_bug290777_check()) {
 			alert ("You are using a Mozilla release with a broken prototype implementation.\nMozilla 1.7.7 and Firefox 1.0.3 are known to have this bug.\n Please up- or downgrade.");
 			return true;
